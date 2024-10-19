@@ -2,25 +2,24 @@ import { Ionicons } from "@expo/vector-icons";
 import { ThemeProvider } from "@react-navigation/native";
 import { Stack, useNavigation } from "expo-router";
 import { useColorScheme } from "nativewind";
-import { StatusBar } from "react-native";
 import "../../global.css";
 import IconButton from "../components/IconButton";
 import { DarkTheme, LightTheme } from "../constants/Colors";
 import { QueryProvider } from "../query/QueryProvider";
+import { StatusBar } from "expo-status-bar";
 
 const InitialLayout = () => {
   const { colorScheme } = useColorScheme();
 
   const navigation = useNavigation();
 
+  console.log("colorScheme", colorScheme);
+
   return (
     <>
       <QueryProvider>
         <ThemeProvider value={colorScheme === "dark" ? DarkTheme : LightTheme}>
-          <StatusBar
-            barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
-            animated
-          />
+          <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
           <Stack
             screenOptions={{
               navigationBarColor: "white",
