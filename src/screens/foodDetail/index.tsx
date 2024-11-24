@@ -284,7 +284,7 @@ const FoodDetail = () => {
   ];
 
   return (
-    <ScreenView scrollable bounces>
+    <ScreenView scrollable>
       <View className="h-80 items-center">
         <Image
           source={{
@@ -361,7 +361,7 @@ const FoodDetail = () => {
         <Text className="my-2 text-lg font-semibold text-black dark:text-white">
           Others
         </Text>
-        <View className="flex flex-col gap-2">
+        <View className="mb-4 flex flex-col gap-2">
           {infoCardData.slice(1).map((row, index_row) => (
             <Row key={index_row}>
               {row.map((card, index) => (

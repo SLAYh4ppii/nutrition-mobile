@@ -34,7 +34,7 @@ const Home = () => {
   };
 
   return (
-    <ScreenView scrollable>
+    <ScreenView scrollable bounces>
       <DatePickerSlider onDateChange={handleDateChange} />
       <View className="p-4 pt-0">
         <Text className="pb-2 text-lg font-bold text-black dark:text-white">

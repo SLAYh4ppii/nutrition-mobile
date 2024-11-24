@@ -4,10 +4,21 @@ import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { router } from "expo-router";
 import { useColorScheme } from "nativewind";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { Pressable, Text, View } from "react-native";
 import IconButton from "../IconButton";
 import { MealSectionProps, MealsProps } from "./types";
+import Animated, {
+  BounceIn,
+  BounceOut,
+  FadeIn,
+  FadeOut,
+  LightSpeedInLeft,
+  LightSpeedOutRight,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated";
 
 const MAX_RECORDS_TO_SHOW = 3;
 
@@ -56,41 +67,43 @@ const MealItem = ({
   const MemorizedImage = useMemo(() => Image, []);
 
   return (
-    <Pressable
-      onPress={onPress}
-      className="flex flex-row items-center justify-between px-4 py-3"
-    >
-      <View className="flex-1 flex-row items-center">
-        <MemorizedImage
-          source={{ uri: image }}
-          style={{
-            width: 60,
-            height: 60,
-            borderRadius: 4,
-            borderWidth: 1,
-            borderColor: "#00000030",
-            marginRight: 8,
-          }}
-        />
-        <View className="flex-1">
-          <Text
-            className="text-black-400 text-md w-3/4 font-semibold dark:text-gray-100"
-            numberOfLines={1}
-          >
-            {title}
-          </Text>
-          <Text
-            className="text-xs text-gray-400 dark:text-gray-300"
-            numberOfLines={1}
-          >
-            {description}
-          </Text>
+    <Animated.View entering={LightSpeedInLeft}>
+      <Pressable
+        onPress={onPress}
+        className="flex flex-row items-center justify-between px-4 py-3"
+      >
+        <View className="flex-1 flex-row items-center">
+          <MemorizedImage
+            source={{ uri: image }}
+            style={{
+              width: 60,
+              height: 60,
+              borderRadius: 4,
+              borderWidth: 1,
+              borderColor: "#00000030",
+              marginRight: 8,
+            }}
+          />
+          <View className="flex-1">
+            <Text
+              className="text-black-400 text-md w-3/4 font-semibold dark:text-gray-100"
+              numberOfLines={1}
+            >
+              {title}
+            </Text>
+            <Text
+              className="text-xs text-gray-400 dark:text-gray-300"
+              numberOfLines={1}
+            >
+              {description}
+            </Text>
+          </View>
         </View>
-      </View>
-      <Text className="text-xs text-gray-400 dark:text-gray-300">
-        {calories} cal
-      </Text>
-    </Pressable>
+        <Text className="text-xs text-gray-400 dark:text-gray-300">
+          {calories} cal
+        </Text>
+      </Pressable>
+    </Animated.View>
   );
 };
 
