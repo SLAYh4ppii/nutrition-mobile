@@ -1,4 +1,8 @@
-// https://docs.expo.dev/guides/using-eslint/
 module.exports = {
-  extends: 'expo',
+  extends: "expo",
+  plugins: ["formatjs", "eslint-plugin-react-compiler"],
+  rules: {
+    "formatjs/no-literal-string-in-jsx": "error",
+    "react-compiler/react-compiler": "error",
+  },
 };
