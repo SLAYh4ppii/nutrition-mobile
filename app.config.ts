@@ -8,6 +8,7 @@ const config: ExpoConfig = {
   icon: "./src/assets/images/icon.png",
   scheme: "myapp",
   userInterfaceStyle: "automatic",
+  newArchEnabled: true,
   splash: {
     image: "./src/assets/images/splash.png",
     resizeMode: "contain",
@@ -34,6 +35,7 @@ const config: ExpoConfig = {
   },
   experiments: {
     typedRoutes: true,
+    reactCompiler: true,
   },
   extra: {
     eas: {
@@ -46,13 +48,13 @@ const config: ExpoConfig = {
       "expo-build-properties",
       {
         android: {
-          compileSdkVersion: 34,
+          compileSdkVersion: 35,
           targetSdkVersion: 34,
           buildToolsVersion: "34.0.0",
           kotlinVersion: "1.9.0",
         },
         ios: {
-          deploymentTarget: "13.4",
+          deploymentTarget: "15.1",
         },
       },
     ],
@@ -67,6 +69,7 @@ const config: ExpoConfig = {
           "$(PRODUCT_NAME) needs access to your Microphone.",
       },
     ],
+    ["expo-localization"],
   ],
 };
 
