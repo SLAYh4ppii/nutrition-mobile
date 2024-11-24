@@ -54,12 +54,20 @@ const fetchMe = async () => {
 };
 
 const fetchUpdateMe = async (user: Partial<User>) => {
+  const actualUser = {
+    email: user.email,
+    height: user.height,
+    weight: user.weight,
+    firstName: user.firstName,
+    lastName: user.lastName,
+  };
+
   const response = await fetchWithToken(ME_API, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(user),
+    body: JSON.stringify(actualUser),
   });
 
   const result = await response.json();

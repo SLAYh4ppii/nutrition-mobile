@@ -7,6 +7,7 @@ import Overview from "@/src/components/Overview";
 import ScreenView from "@/src/components/ScreenView";
 import WaterOverview from "@/src/components/WaterOverview";
 import { format } from "date-fns";
+import { t } from "i18next";
 import { useState } from "react";
 import { Text, View } from "react-native";
 
@@ -38,33 +39,33 @@ const Home = () => {
       <DatePickerSlider onDateChange={handleDateChange} />
       <View className="p-4 pt-0">
         <Text className="pb-2 text-lg font-bold text-black dark:text-white">
-          Overview
+          {t("home.OVERVIEW")}
         </Text>
         <Overview
           startDate={selectedDateRange.startDate}
           endDate={selectedDateRange.endDate}
         />
         <Text className="pb-2 pt-2 text-lg font-bold text-black dark:text-white">
-          Meals
+          {t("home.MEALS")}
         </Text>
         <Meals
           startDate={selectedDateRange.startDate}
           endDate={selectedDateRange.endDate}
         />
         <Text className="pb-2 pt-2 text-lg font-bold text-black dark:text-white">
-          Daily Tips
+          {t("home.DAILY_TIPS")}
         </Text>
         <DailyTips />
         <Text className="pb-2 pt-2 text-lg font-bold text-black dark:text-white">
-          Water Intake
+          {t("home.WATER_INTAKE")}
         </Text>
         <WaterOverview />
         <Text className="pb-2 pt-2 text-lg font-bold text-black dark:text-white">
-          Weight Update
+          {t("home.WEIGHT_UPDATE")}
         </Text>
         <NumberSelector />
         <Text className="pb-2 pt-2 text-lg font-bold text-black dark:text-white">
-          Activities
+          {t("home.ACTIVITIES")}
         </Text>
         <ActivityOverview />
       </View>

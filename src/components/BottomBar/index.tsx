@@ -90,11 +90,15 @@ const BottomBar = (props: BottomTabBarProps) => {
 
   return (
     <>
-      <SafeAreaView edges={["bottom"]}>
+      <View
+        style={{
+          paddingBottom: props.insets.bottom,
+        }}
+      >
         <View className="h-16 flex-row justify-between border border-b-0 border-l-0 border-r-0 border-gray-200 bg-white dark:border-gray-900 dark:bg-black">
           {state.routes.map((route, index) => button(route, index))}
         </View>
-      </SafeAreaView>
+      </View>
     </>
   );
 };

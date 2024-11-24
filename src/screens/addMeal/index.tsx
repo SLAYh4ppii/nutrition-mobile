@@ -100,7 +100,7 @@ const AddMeals = () => {
   });
 
   return (
-    <View className="flex-1 flex-col items-center justify-center gap-2 p-4">
+    <View className="flex-col items-center justify-center gap-2 p-4">
       <Text className="text-black-400 text-xl font-semibold dark:text-gray-100">
         Add Meals / {MEAL_TIMES[mealTime].title}
       </Text>

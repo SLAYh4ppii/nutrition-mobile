@@ -4,6 +4,7 @@ import useMe from "@/src/query/hooks/useMe";
 import { calculateBMI, getBmiCategory } from "@/src/utils/bmi";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import { t } from "i18next";
 import { useColorScheme } from "nativewind";
 import { Pressable, Text, View } from "react-native";
 
@@ -85,7 +86,7 @@ const Profile = () => {
     <ScreenView scrollable>
       <View className="flex gap-4 p-4">
         <Text className="text-xl font-bold dark:text-white">
-          Personal Information
+          {t("profile.PERSONAL_INFORMATION")}
         </Text>
         <Container>
           <Section
@@ -95,9 +96,15 @@ const Profile = () => {
           <Seperator />
           <Section leftIcon="mail-outline" text={me?.email} />
           <Seperator />
-          <Section leftIcon="calendar-outline" text={`${me?.age} years`} />
+          <Section
+            leftIcon="calendar-outline"
+            text={`${me?.age} ${t("profile.YEARS")}`}
+          />
           <Seperator />
-          <Section leftIcon="person-outline" text={me?.gender} />
+          <Section
+            leftIcon="person-outline"
+            text={t("profile.GENDER." + me.gender.toUpperCase())}
+          />
           <Seperator />
           <Section leftIcon="medkit-outline" text={`${me?.height} cm`} />
           <Seperator />
@@ -110,25 +117,30 @@ const Profile = () => {
           <Seperator />
           <Section
             leftIcon="person-outline"
-            text="Edit Profile"
+            text={t("profile.UPDATE_PROFILE")}
             rightIcon="chevron-forward"
             onPress={() => router.push("update")}
           />
           <Seperator />
           <Section
             leftIcon="bar-chart-outline"
-            text={"Weight History"}
+            text={t("profile.WEIGHT_HISTORY")}
             rightIcon="chevron-forward"
             onPress={() => router.push("weight")}
           />
         </Container>
-        <Text className="text-xl font-bold dark:text-white">App Settings</Text>
+        <Text className="text-xl font-bold dark:text-white">
+          {t("profile.APP_SETTINGS")}
+        </Text>
         <Container>
-          <Section leftIcon="notifications-outline" text="Notifications" />
+          <Section
+            leftIcon="notifications-outline"
+            text={t("profile.NOTIFICATIONS")}
+          />
           <Seperator />
           <Section
             leftIcon="moon-outline"
-            text="Dark Mode"
+            text={t("profile.DARK_MODE")}
             rightComponent={
               <DarkModeToggle
                 value={colorScheme === "dark"}
@@ -139,15 +151,26 @@ const Profile = () => {
           <Seperator />
           <Section
             leftIcon="language-outline"
-            text="Language"
+            text={t("profile.LANGUAGE")}
             rightIcon="chevron-forward"
+            onPress={() => router.push("language")}
           />
         </Container>
-        <Text className="text-xl font-bold dark:text-white">Contact Us</Text>
+        <Text className="text-xl font-bold dark:text-white">
+          {t("profile.CONTACT_US")}
+        </Text>
         <Container>
-          <Section leftIcon="call-outline" text="Call Us" rightIcon="call" />
+          <Section
+            leftIcon="call-outline"
+            text={t("profile.CALL_US")}
+            rightIcon="call"
+          />
           <Seperator />
-          <Section leftIcon="mail-outline" text="Email Us" rightIcon="mail" />
+          <Section
+            leftIcon="mail-outline"
+            text={t("profile.EMAIL_US")}
+            rightIcon="mail"
+          />
         </Container>
       </View>
     </ScreenView>

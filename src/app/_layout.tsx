@@ -7,6 +7,7 @@ import IconButton from "../components/IconButton";
 import { DarkTheme, LightTheme } from "../constants/Colors";
 import { QueryProvider } from "../query/QueryProvider";
 import { StatusBar } from "expo-status-bar";
+import "../i18n";
 
 const InitialLayout = () => {
   const { colorScheme } = useColorScheme();

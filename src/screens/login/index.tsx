@@ -42,7 +42,7 @@ const Login = () => {
       const token = data?.data.token;
       if (token) {
         setToken(token);
-        router.push("(auth)/(home)");
+        router.replace("(auth)/(home)");
       }
     }
   }, [isSuccess, remember]);

@@ -77,9 +77,6 @@ const AddWater = () => {
 
   return (
     <View className="flex-1 p-4">
-      <Text className="text-center text-xl font-bold dark:text-white">
-        Water Intake
-      </Text>
       <View className="absolute inset-x-0 bottom-0 z-10 flex-1 flex-row items-center justify-center gap-4 pb-4">
         <Animated.View style={[bounceAnimation]}>
           <Pressable
@@ -111,13 +108,14 @@ const AddWater = () => {
           </Text>
         </Pressable>
       </View>
-      <View className="p-0">
+      <View className="flex items-center justify-center p-0">
         <AnimatedLottieView
           {...panResponder.panHandlers}
           source={require("../../assets/animations/water.json")}
           style={{
             width: "100%",
-            height: "100%",
+            height: "90%",
+            aspectRatio: 1,
           }}
           resizeMode="cover"
           onLayout={(event) => {

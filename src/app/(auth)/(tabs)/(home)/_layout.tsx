@@ -2,6 +2,7 @@ import IconButton from "@/src/components/IconButton";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { Stack } from "expo-router/stack";
+import { t } from "i18next";
 import { useColorScheme } from "nativewind";
 
 const HomeStackLayout = () => {
@@ -16,7 +17,7 @@ const HomeStackLayout = () => {
     >
       <Stack.Screen
         options={{
-          title: "Home",
+          title: t("home.HEADER_TITLE"),
           headerShown: true,
           headerLeft: () => (
             <IconButton
@@ -38,15 +39,16 @@ const HomeStackLayout = () => {
       <Stack.Screen
         name="addMeal"
         options={{
-          presentation: "modal",
+          presentation: "formSheet",
         }}
       />
       <Stack.Screen
         name="addWater"
         options={{
           presentation: "card",
-          gestureEnabled: false,
+          gestureEnabled: true,
           animation: "flip",
+          headerShown: true,
         }}
       />
       <Stack.Screen
@@ -68,7 +70,7 @@ const HomeStackLayout = () => {
           title: "Nutri Guide",
           headerShown: true,
           presentation: "modal",
-          animation: "fade"
+          animation: "fade",
         }}
         name="aiRecommendation"
       />

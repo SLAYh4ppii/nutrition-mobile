@@ -5,6 +5,7 @@ import Button from "../Button";
 import { useState } from "react";
 import useMe from "@/src/query/hooks/useMe";
 import { useColorScheme } from "nativewind";
+import { t } from "i18next";
 
 const BOUNDS = {
   min: 35,
@@ -21,16 +22,16 @@ const NumberSelector = () => {
 
   const handleWeightUpdate = () => {
     Alert.alert(
-      "Update Weight",
-      `Are you sure you want to update your weight to ${currentValue} kg?`,
+      t("NumberSelector.UPDATE_WEIGHT"),
+      t("NumberSelector.UPDATE_WEIGHT_MESSAGE", { currentValue }),
       [
         {
-          text: "Cancel",
+          text: t("General.CANCEL"),
           onPress: () => console.log("Cancel Pressed"),
           style: "cancel",
         },
         {
-          text: "OK",
+          text: t("General.OK"),
           onPress: async () => {
             await updateMe({ weight: currentValue });
           },

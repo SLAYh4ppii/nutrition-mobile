@@ -1,3 +1,5 @@
+import { DefaultTheme, Theme } from "@react-navigation/native";
+
 const MAIN_COLORS = {
   PRIMARY: "#FF6B6B",
   SECONDARY: "#FFD166",
@@ -34,7 +36,7 @@ const COLORS = {
   status: STATUS_COLORS,
 };
 
-export const LightTheme = {
+export const LightTheme: Theme = {
   dark: false,
   colors: {
     primary: "#84cc16",
@@ -44,9 +46,10 @@ export const LightTheme = {
     border: "rgb(216, 216, 216)",
     notification: "rgb(255, 59, 48)",
   },
+  fonts: DefaultTheme.fonts,
 };
 
-export const DarkTheme = {
+export const DarkTheme: Theme = {
   dark: true,
   colors: {
     primary: "#22c55e",
@@ -56,6 +59,7 @@ export const DarkTheme = {
     border: "rgb(39, 39, 41)",
     notification: "rgb(255, 69, 58)",
   },
+  fonts: DefaultTheme.fonts,
 };
 
 export const IconColors = {

@@ -1,3 +1,4 @@
+import { useColorScheme } from "nativewind";
 import { View } from "react-native";
 import Animated, {
   useAnimatedStyle,
@@ -9,6 +10,8 @@ type ChartLineProps = {
 };
 
 const ChartLine = ({ value = 0 }: ChartLineProps) => {
+  const { colorScheme } = useColorScheme();
+
   const animatedStyle = useAnimatedStyle(() => {
     return {
       width: withSpring(value * 100, {
@@ -22,8 +25,18 @@ const ChartLine = ({ value = 0 }: ChartLineProps) => {
     <View className="-1 flex flex-row p-2">
       <View className="h-2 w-full overflow-hidden rounded-full bg-gray-300 dark:bg-gray-500">
         <Animated.View
-          className={`h-2 bg-green-500 duration-500 dark:bg-lime-400`}
-          style={animatedStyle}
+          className={`h-2 duration-500`}
+          style={[
+            animatedStyle,
+            {
+              backgroundColor:
+                value > 1
+                  ? "red"
+                  : colorScheme === "dark"
+                    ? "#a3e635"
+                    : "#22c55e",
+            },
+          ]}
         />
       </View>
     </View>

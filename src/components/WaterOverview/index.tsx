@@ -2,18 +2,23 @@ import useWater from "@/src/query/hooks/useWater";
 import { format } from "date-fns";
 import { router } from "expo-router";
 import { Image, Pressable, Text, View } from "react-native";
+import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 
 type WaterOverviewProps = {};
 
-const FilledWater = () => (
-  <Image
-    source={require("../../assets/images/water-filled.png")}
-    className="h-16 flex-1"
-  />
-);
+const FilledWater = () => {
+  return (
+    <Animated.Image
+      entering={FadeIn}
+      source={require("../../assets/images/water-filled.png")}
+      className="h-16 flex-1"
+    />
+  );
+};
 
 const EmptyWater = () => (
-  <Image
+  <Animated.Image
+    exiting={FadeOut}
     source={require("../../assets/images/water-empty.png")}
     className="h-16 flex-1"
   />

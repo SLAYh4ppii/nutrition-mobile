@@ -11,9 +11,10 @@ import {
 const styles = StyleSheet.create({
   cameraStyle: {
     width: "100%",
-    height: "100%",
-    backgroundColor: "#000",
-    aspectRatio: 16 / 9,
+    backgroundColor: "#f00",
+    aspectRatio: 1,
+    borderRadius: 20,
+    borderWidth: 2,
   },
 });
 
@@ -73,8 +74,8 @@ const Camera = () => {
   return (
     <ScreenView>
       <View className="flex-1 items-center justify-center bg-white dark:bg-black">
-        <View className="flex-1 items-center justify-center bg-white dark:bg-black">
-          <CameraOverlay />
+        <View className="flex-1 items-center justify-center bg-white p-8 dark:bg-black">
+          {/* <CameraOverlay /> */}
           <CameraWrapper
             hasPermission={hasPermission}
             devices={device ? [device] : []}

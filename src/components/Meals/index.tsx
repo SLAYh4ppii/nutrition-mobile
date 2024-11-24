@@ -4,21 +4,12 @@ import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { router } from "expo-router";
 import { useColorScheme } from "nativewind";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { Pressable, Text, View } from "react-native";
+import Animated, { LightSpeedInLeft } from "react-native-reanimated";
 import IconButton from "../IconButton";
 import { MealSectionProps, MealsProps } from "./types";
-import Animated, {
-  BounceIn,
-  BounceOut,
-  FadeIn,
-  FadeOut,
-  LightSpeedInLeft,
-  LightSpeedOutRight,
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from "react-native-reanimated";
+import { t } from "i18next";
 
 const MAX_RECORDS_TO_SHOW = 3;
 
@@ -27,10 +18,10 @@ const MealHeader = ({ title, calories, mealTime }: MealsProps) => {
 
   return (
     <View className="flex flex-row items-center justify-between rounded-lg bg-gray-100 px-2 dark:bg-gray-700">
-      <Text className="text-black-400 text-md font-semibold dark:text-gray-100">
+      <Text className="text-black-400 py-2 text-lg font-semibold dark:text-gray-100">
         {title}{" "}
-        <Text className="text-xs text-gray-400 dark:text-gray-300">
-          ({Math.round(calories)} cal)
+        <Text className="text-sm text-gray-400 dark:text-gray-300">
+          {Math.round(calories)} {t("General.CAL")}
         </Text>
       </Text>
       <IconButton
@@ -92,7 +83,7 @@ const MealItem = ({
               {title}
             </Text>
             <Text
-              className="text-xs text-gray-400 dark:text-gray-300"
+              className="text-md text-gray-400 dark:text-gray-300"
               numberOfLines={1}
             >
               {description}
@@ -100,7 +91,7 @@ const MealItem = ({
           </View>
         </View>
         <Text className="text-xs text-gray-400 dark:text-gray-300">
-          {calories} cal
+          {calories} {t("General.CAL")}
         </Text>
       </Pressable>
     </Animated.View>
@@ -110,7 +101,7 @@ const MealItem = ({
 const NoRecords = () => (
   <View className="flex flex-col justify-center px-4 py-3">
     <Text className="text-black-400 text-md dark:text-gray-100">
-      No records found
+      {t("Meals.NO_RECORDS")}
     </Text>
   </View>
 );
@@ -118,7 +109,7 @@ const NoRecords = () => (
 const MoreRecords = ({ count }: { count: number }) => (
   <View className="mb-2 flex flex-col justify-center rounded-lg bg-gray-100 px-4 py-3 opacity-50 dark:bg-gray-700">
     <Text className="text-black-400 text-md dark:text-gray-100">
-      +{count} more records
+      {t("Meals.MORE_RECORDS", { count })}
     </Text>
   </View>
 );
@@ -131,9 +122,9 @@ const MealSection = ({
   endDate,
 }: MealSectionProps) => {
   const mealIcons = {
-    breakfast: "🥞 Breakfast",
-    lunch: "🥘 Lunch",
-    dinner: "🍲 Dinner",
+    breakfast: t("Meals.BREAKFAST"),
+    lunch: t("Meals.LUNCH"),
+    dinner: t("Meals.DINNER"),
   };
 
   const mealData = meals[mealType] || [];

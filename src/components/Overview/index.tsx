@@ -11,6 +11,7 @@ import CarbsIcon from "@/src/assets/icons/carb.png";
 import FatIcon from "@/src/assets/icons/fat.png";
 import ProteinIcon from "@/src/assets/icons/protein.png";
 import { IconColors } from "@/src/constants/Colors";
+import { t } from "i18next";
 
 type OverviewProps = {
   startDate: string;
@@ -49,7 +50,7 @@ const Overview = ({ startDate, endDate }: OverviewProps) => {
             {total} <Text className="text-sm font-normal">kcal</Text>
           </Text>
           <Text className="text-sm font-semibold text-gray-400 dark:text-gray-300">
-            Total
+            {t("Overview.TOTAL")}
           </Text>
         </View>
         <ChartCircle calorie={consumedCalories} total={total} />
@@ -71,7 +72,9 @@ const Overview = ({ startDate, endDate }: OverviewProps) => {
               "text-red-500": total < consumedCalories,
             })}
           >
-            {total > consumedCalories ? "Remaining" : "Exceeded"}
+            {total > consumedCalories
+              ? t("Overview.REMAINING")
+              : t("Overview.EXCEEDED")}
           </Text>
         </View>
       </View>
@@ -84,13 +87,13 @@ const Overview = ({ startDate, endDate }: OverviewProps) => {
               tintColor={IconColors.carbonhydrate}
             />
             <Text className="text-black-400 text-sm font-semibold dark:text-gray-100">
-              Carbs
+              {t("General.CARBS")}
             </Text>
           </View>
           <Text className="text-black-400 text-sm font-semibold dark:text-gray-100">
-            {macroNutrients.carbs.toFixed(1)} gr /{" "}
+            {macroNutrients.carbs.toFixed(1)} {t("General.GR")} /{" "}
             <Text className="text-xs text-gray-400 dark:text-gray-300">
-              {maximumNutrients.carbs} gr
+              {maximumNutrients.carbs} {t("General.GR")}
             </Text>
           </Text>
           <ChartLine value={macroNutrients.carbs / maximumNutrients.carbs} />
@@ -104,13 +107,13 @@ const Overview = ({ startDate, endDate }: OverviewProps) => {
               tintColor={IconColors.protein}
             />
             <Text className="text-black-400 text-sm font-semibold dark:text-gray-100">
-              Protein
+              {t("General.PROTEIN")}
             </Text>
           </View>
           <Text className="text-black-400 text-sm font-semibold dark:text-gray-100">
-            {macroNutrients.protein.toFixed(1)} gr /{" "}
+            {macroNutrients.protein.toFixed(1)} {t("General.GR")} /{" "}
             <Text className="text-xs text-gray-400 dark:text-gray-300">
-              {maximumNutrients.protein} gr
+              {maximumNutrients.protein} {t("General.GR")}
             </Text>
           </Text>
           <ChartLine
@@ -126,13 +129,13 @@ const Overview = ({ startDate, endDate }: OverviewProps) => {
               tintColor={IconColors.fat}
             />
             <Text className="text-black-400 text-sm font-semibold dark:text-gray-100">
-              Fat
+              {t("General.FAT")}
             </Text>
           </View>
           <Text className="text-black-400 text-sm font-semibold dark:text-gray-100">
-            {macroNutrients.fat.toFixed(1)} gr /{" "}
+            {macroNutrients.fat.toFixed(1)} {t("General.GR")} /{" "}
             <Text className="text-xs text-gray-400 dark:text-gray-300">
-              {maximumNutrients.fat} gr
+              {maximumNutrients.fat} {t("General.GR")}
             </Text>
           </Text>
           <ChartLine value={macroNutrients.fat / maximumNutrients.fat} />
