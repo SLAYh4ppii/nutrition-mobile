@@ -1,6 +1,12 @@
 import { FOOD_DETAILS_API } from "@/src/constants/Api";
 import { useQuery } from "@tanstack/react-query";
 
+
+type measurementsType = {
+  type: string;
+  unit: string;
+  description: string;
+}
 export interface FoodDetailsType {
   alcohol: number;
   caffeine: number;
@@ -36,6 +42,7 @@ export interface FoodDetailsType {
   water: number;
   wweia_category_number: number;
   zinc: number;
+  measurements: measurementsType[];
 }
 
 const fetchFoodDetails = async (foodId: string | undefined) => {

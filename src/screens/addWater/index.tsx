@@ -1,16 +1,14 @@
 import useAddWater from "@/src/query/hooks/useAddWater";
 import { router } from "expo-router";
 import LottieView from "lottie-react-native";
-import { useState } from "react";
 import { PanResponder, Pressable, Text, TextInput, View } from "react-native";
 import Animated, {
-  runOnJS,
   useAnimatedProps,
   useAnimatedStyle,
   useSharedValue,
   withSequence,
   withSpring,
-  withTiming,
+  withTiming
 } from "react-native-reanimated";
 
 const clamp = (value: number, lowerBound = 0, upperBound = 1) => {
@@ -81,15 +79,14 @@ const AddWater = () => {
         <Animated.View style={[bounceAnimation]}>
           <Pressable
             onPress={() => {
-              // glassRatio.value = 0;
               mutate(Math.round(glassRatio.value * 250));
               router.back();
             }}
-            className="z-30 h-20 w-24 flex-col items-center justify-center rounded-2xl border-2 border-white bg-lime-500 active:bg-lime-400 dark:border-black"
+            className="z-30 h-20 w-36 flex-col items-center justify-center rounded-2xl border-2 border-white bg-lime-500 active:bg-lime-400 dark:border-black"
           >
             <AnimatedText
               editable={false}
-              className="text-center text-xl font-semibold dark:text-white"
+              className="text-center text-xl font-semibold dark:text-white w-16"
               animatedProps={AmountTextProp}
             />
             <Text className="text-center text-sm font-semibold text-white dark:text-white">

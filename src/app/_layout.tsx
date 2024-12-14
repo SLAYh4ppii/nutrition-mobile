@@ -8,13 +8,12 @@ import { DarkTheme, LightTheme } from "../constants/Colors";
 import { QueryProvider } from "../query/QueryProvider";
 import { StatusBar } from "expo-status-bar";
 import "../i18n";
+import React from "react";
 
 const InitialLayout = () => {
   const { colorScheme } = useColorScheme();
 
   const navigation = useNavigation();
-
-  console.log("colorScheme", colorScheme);
 
   return (
     <>

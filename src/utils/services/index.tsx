@@ -60,14 +60,14 @@ export const fetchFoodSearch = async ({
     };
   }
 
-  console.log("Search request for", searchTerm, "page", page);
-
   const response = await fetchWithToken(
     `${FOOD_SEARCH_API}?query=${searchTerm.toLowerCase()}&page=${page}&limit=20`,
   );
 
+  
   const data = (await response.json()) as PageResponse;
-
+  
+  console.log(JSON.stringify(data, null, 2));
   return {
     data: data.data,
     page: data.page,

@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { ONBOARDING_SLIDES } from "./constants";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Storage from "@/src/storage";
+import React from "react";
 
 const SliderItem = ({
   title,
