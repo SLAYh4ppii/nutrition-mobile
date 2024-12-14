@@ -35,7 +35,7 @@ const AnimatedFloatingButton = ({
   return (
     <Animated.View
       pointerEvents="box-none"
-      entering={SlideInDown.duration(1000).delay(1000).springify()}
+      entering={SlideInDown.duration(1000).delay(0).springify()}
       style={{
         position: "absolute",
         zIndex: 2,
