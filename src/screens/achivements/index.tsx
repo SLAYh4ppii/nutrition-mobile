@@ -1,4 +1,5 @@
 import { router } from "expo-router";
+import { useTranslation } from "react-i18next";
 import {
   FlatList,
   Image,
@@ -165,11 +166,12 @@ const Badge = (badge: {
 
 const Achievements = () => {
   const { width } = useWindowDimensions();
+  const { t } = useTranslation();
 
   return (
     <View className="bg-red flex-1 pt-4">
       <Text className="mb-4 ml-4 text-xl font-semibold text-black dark:text-white">
-        My Achievements 🏆
+        {t("achievements.title")}
       </Text>
       <View className="h-32 w-full">
         <FlatList
@@ -183,7 +185,7 @@ const Achievements = () => {
       </View>
       <View className="flex-1">
         <Text className="my-4 ml-4 text-xl font-semibold text-black dark:text-white">
-          Upcoming Badges 🎯
+          {t("achievements.upcomingBadges")}
         </Text>
         <FlatList
           data={DUMMY_BADGES.filter((badge) => !badge.earned)}

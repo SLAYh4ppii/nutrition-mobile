@@ -1,6 +1,9 @@
 import { Stack } from "expo-router/stack";
+import { useTranslation } from "react-i18next";
 
 const AchivementsStackLayout = () => {
+  const { t } = useTranslation();
+
   return (
     <Stack
       screenOptions={{
@@ -11,7 +14,7 @@ const AchivementsStackLayout = () => {
         name="index"
         options={{
           headerShown: true,
-          title: "Achivements",
+          title: t("achievements.HEADER_TITLE"),
         }}
       />
       <Stack.Screen

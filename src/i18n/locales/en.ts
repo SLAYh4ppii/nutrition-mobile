@@ -78,6 +78,11 @@ const en = {
     TITLE: "Weight History",
     DESCRIPTION: "Your weight history will be displayed here.",
   },
+  achievements: {
+    HEADER_TITLE: "Achievements",
+    title: "My Achievements 🏆",
+    upcomingBadges: "Upcoming Badges 🎯",
+  },
 };
 
 export default en;

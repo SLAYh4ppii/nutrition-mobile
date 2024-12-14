@@ -78,6 +78,11 @@ const tr = {
     TITLE: "Kilo Geçmişi",
     DESCRIPTION: "Kilo geçmişiniz burada görüntülenecektir.",
   },
+  achievements: {
+    HEADER_TITLE: "Başarılarım",
+    title: "Başarılarım 🏆",
+    upcomingBadges: "Gelecek Badge 🎯",
+  },
 };
 
 export default tr;
