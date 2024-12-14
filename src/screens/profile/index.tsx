@@ -4,8 +4,8 @@ import useMe from "@/src/query/hooks/useMe";
 import { calculateBMI, getBmiCategory } from "@/src/utils/bmi";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
-import { t } from "i18next";
 import { useColorScheme } from "nativewind";
+import { useTranslation } from "react-i18next";
 import { Pressable, Text, View } from "react-native";
 
 const Container = ({ children }: { children: React.ReactNode }) => {
@@ -32,13 +32,14 @@ const Section = ({
   rightComponent,
   onPress,
 }: {
-  leftIcon?: string;
+  leftIcon?: keyof typeof Ionicons.glyphMap;
   text: string | undefined;
-  rightIcon?: string;
+  rightIcon?: keyof typeof Ionicons.glyphMap;
   rightComponent?: React.ReactNode;
   onPress?: () => void;
 }) => {
   const { colorScheme } = useColorScheme();
+  const { t } = useTranslation();
 
   return (
     <Pressable
@@ -73,6 +74,7 @@ const Section = ({
 const Profile = () => {
   const { me, isLoading } = useMe();
   const { colorScheme, toggleColorScheme } = useColorScheme();
+  const { t } = useTranslation();
 
   if (isLoading) {
     return <Text>Loading...</Text>;
@@ -119,14 +121,14 @@ const Profile = () => {
             leftIcon="person-outline"
             text={t("profile.UPDATE_PROFILE")}
             rightIcon="chevron-forward"
-            onPress={() => router.push("update")}
+            onPress={() => router.push("/update")}
           />
           <Seperator />
           <Section
             leftIcon="bar-chart-outline"
             text={t("profile.WEIGHT_HISTORY")}
             rightIcon="chevron-forward"
-            onPress={() => router.push("weight")}
+            onPress={() => router.push("/weight")}
           />
         </Container>
         <Text className="text-xl font-bold dark:text-white">
@@ -153,7 +155,7 @@ const Profile = () => {
             leftIcon="language-outline"
             text={t("profile.LANGUAGE")}
             rightIcon="chevron-forward"
-            onPress={() => router.push("language")}
+            onPress={() => router.push("/language")}
           />
         </Container>
         <Text className="text-xl font-bold dark:text-white">

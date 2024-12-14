@@ -1,11 +1,10 @@
 import { initReactI18next } from "react-i18next";
-import * as Localization from "expo-localization";
 import i18n from "i18next";
 import en from "./locales/en";
 import tr from "./locales/tr";
-import Storage from "../storage";
-import { useState } from "react";
 import "intl-pluralrules";
+import Storage from "../storage";
+import { useState, useEffect } from "react";
 
 export const LANGUAGES = [
   { name: "English", originalName: "English", code: "en" },
@@ -21,35 +20,51 @@ const resources = {
   },
 };
 
-const initI18n = () => {
-  const savedLanguage = Storage.getItem("LANGUAGE_CODE");
-
-  const systemLanguage = Localization.getLocales();
-
-  i18n.use(initReactI18next).init({
+i18n
+  .use(initReactI18next)
+  .init({
     resources,
-    lng: savedLanguage || systemLanguage[0].languageCode || "en",
+    lng: 'en', // Default language
     fallbackLng: "en",
     compatibilityJSON: "v3",
+    react: {
+      useSuspense: false,
+      bindI18n: 'languageChanged loaded',
+      bindI18nStore: 'added removed',
+      transEmptyNodeValue: '',
+    },
+    interpolation: {
+      escapeValue: false,
+    },
+    debug: false
   });
-};
 
-export const changeLanguage = (languageCode: string) => {
-  console.log("changeLanguage", languageCode);
-  i18n.changeLanguage(languageCode);
-  Storage.setItem("LANGUAGE_CODE", languageCode);
+export const changeLanguage = async (languageCode: string) => {
+  try {
+    await i18n.changeLanguage(languageCode);
+    await Storage.setItem("LANGUAGE_CODE", languageCode);
+    console.log('Language changed to:', languageCode);
+  } catch (error) {
+    console.error('Error changing language:', error);
+  }
 };
 
 export const useSelectedLanguage = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
 
-  i18n.on("languageChanged", (lng) => {
-    setSelectedLanguage(lng);
-  });
+  useEffect(() => {
+    const handleLanguageChanged = (lng: string) => {
+      setSelectedLanguage(lng);
+    };
+
+    i18n.on("languageChanged", handleLanguageChanged);
+
+    return () => {
+      i18n.off("languageChanged", handleLanguageChanged);
+    };
+  }, []);
 
   return selectedLanguage;
 };
-
-initI18n();
 
 export default i18n;

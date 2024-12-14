@@ -9,8 +9,10 @@ import { useAuth } from "@/src/store/authStore";
 import { router } from "expo-router";
 import { Image, Keyboard, SafeAreaView, Text, View } from "react-native";
 import { isValidEmail, isValidPassword } from "./utils";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
+  const { t } = useTranslation();
   const [remember, setRemember] = useState(false);
   const { isLoggedIn, setToken } = useAuth();
 
@@ -42,7 +44,7 @@ const Login = () => {
       const token = data?.data.token;
       if (token) {
         setToken(token);
-        router.replace("(auth)/(home)");
+        router.replace("/(auth)/(home)");
       }
     }
   }, [isSuccess, remember]);
@@ -63,11 +65,11 @@ const Login = () => {
             className="h-16 w-16 rounded-xl bg-slate-200"
           />
           <Text className="text-2xl font-bold dark:color-white">
-            Welcome back!
+            {t('login.WELCOME_BACK')}
           </Text>
           <TextInput
             icon="email"
-            placeholder="Email Address"
+            placeholder={t('login.EMAIL_ADDRESS')}
             autoCapitalize="none"
             keyboardType="email-address"
             error={loginInformation.email.error}
@@ -84,7 +86,7 @@ const Login = () => {
           />
           <TextInput
             icon="lock"
-            placeholder="Password"
+            placeholder={t('login.PASSWORD')}
             secureTextEntry
             error={loginInformation.password.error}
             value={loginInformation.password.text}
@@ -97,7 +99,7 @@ const Login = () => {
           />
           <Button
             loading={isPending}
-            label="Login"
+            label={t('login.LOGIN')}
             disabled={
               !isValidEmail(loginInformation.email.text) ||
               !isValidPassword(loginInformation.password.text)
@@ -105,32 +107,33 @@ const Login = () => {
             onPress={handleLogin}
           />
           <Checkbox
-            label="Remember me"
+            label={t('login.REMEMBER_ME')}
             checked={remember}
             onChange={() => setRemember(!remember)}
           />
         </View>
         <View className="flex-1 items-center justify-end gap-2">
           <Text className="text-center text-sm dark:color-white">
-            Don't have an account?{" "}
+            {t('login.DONT_HAVE_ACCOUNT')}{" "}
             <Text
               onPress={() => {
-                router.push("register");
+                router.push("/register");
               }}
               className="text-green-500"
             >
-              Sign Up!
+              {t('login.SIGN_UP')}
             </Text>
           </Text>
           <Text className="text-center text-sm dark:color-white">
-            Forgot your password?{" "}
-            <Text className="text-green-500">Reset password</Text>
+            {t('login.FORGOT_PASSWORD')}{" "}
+            <Text className="text-green-500">{t('login.RESET_PASSWORD')}</Text>
           </Text>
 
           <Text className="text-center text-sm leading-6 dark:color-white">
-            By continuing, you agree to our{" "}
-            <Text className="text-green-500">Terms of Service</Text> and{" "}
-            <Text className="text-green-500">Privacy Policy</Text>
+            {t('login.TERMS_CONDITIONS')}{" "}
+            <Text className="text-green-500">{t('login.TERMS_OF_SERVICE')}</Text>{" "}
+            {t('login.AND')}{" "}
+            <Text className="text-green-500">{t('login.PRIVACY_POLICY')}</Text>
           </Text>
         </View>
       </ScreenView>

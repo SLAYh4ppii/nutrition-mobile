@@ -7,11 +7,12 @@ import Overview from "@/src/components/Overview";
 import ScreenView from "@/src/components/ScreenView";
 import WaterOverview from "@/src/components/WaterOverview";
 import { format } from "date-fns";
-import { t } from "i18next";
 import { useState } from "react";
 import { Text, View } from "react-native";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
+  const { t } = useTranslation();
   const today = new Date();
   const dateObj = new Date(today);
   const nextDay = new Date(dateObj.setDate(dateObj.getDate() + 1));

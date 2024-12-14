@@ -9,12 +9,13 @@ import { Pressable, Text, View } from "react-native";
 import Animated, { LightSpeedInLeft } from "react-native-reanimated";
 import IconButton from "../IconButton";
 import { MealSectionProps, MealsProps } from "./types";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const MAX_RECORDS_TO_SHOW = 3;
 
 const MealHeader = ({ title, calories, mealTime }: MealsProps) => {
   const { colorScheme } = useColorScheme();
+  const { t } = useTranslation();
 
   return (
     <View className="flex flex-row items-center justify-between rounded-lg bg-gray-100 px-2 dark:bg-gray-700">
@@ -56,6 +57,7 @@ const MealItem = ({
   onPress,
 }: MealItemProps) => {
   const MemorizedImage = useMemo(() => Image, []);
+  const { t } = useTranslation();
 
   return (
     <Animated.View entering={LightSpeedInLeft}>
@@ -98,21 +100,27 @@ const MealItem = ({
   );
 };
 
-const NoRecords = () => (
-  <View className="flex flex-col justify-center px-4 py-3">
-    <Text className="text-black-400 text-md dark:text-gray-100">
-      {t("Meals.NO_RECORDS")}
-    </Text>
-  </View>
-);
+const NoRecords = () => {
+  const { t } = useTranslation();
+  return (
+    <View className="flex flex-col justify-center px-4 py-3">
+      <Text className="text-black-400 text-md dark:text-gray-100">
+        {t("Meals.NO_RECORDS")}
+      </Text>
+    </View>
+  );
+};
 
-const MoreRecords = ({ count }: { count: number }) => (
-  <View className="mb-2 flex flex-col justify-center rounded-lg bg-gray-100 px-4 py-3 opacity-50 dark:bg-gray-700">
-    <Text className="text-black-400 text-md dark:text-gray-100">
-      {t("Meals.MORE_RECORDS", { count })}
-    </Text>
-  </View>
-);
+const MoreRecords = ({ count }: { count: number }) => {
+  const { t } = useTranslation();
+  return (
+    <View className="mb-2 flex flex-col justify-center rounded-lg bg-gray-100 px-4 py-3 opacity-50 dark:bg-gray-700">
+      <Text className="text-black-400 text-md dark:text-gray-100">
+        {t("Meals.MORE_RECORDS", { count })}
+      </Text>
+    </View>
+  );
+};
 
 const MealSection = ({
   mealType,
@@ -121,6 +129,8 @@ const MealSection = ({
   startDate,
   endDate,
 }: MealSectionProps) => {
+  const { t } = useTranslation();
+  
   const mealIcons = {
     breakfast: t("Meals.BREAKFAST"),
     lunch: t("Meals.LUNCH"),

@@ -11,7 +11,7 @@ import CarbsIcon from "@/src/assets/icons/carb.png";
 import FatIcon from "@/src/assets/icons/fat.png";
 import ProteinIcon from "@/src/assets/icons/protein.png";
 import { IconColors } from "@/src/constants/Colors";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 type OverviewProps = {
   startDate: string;
@@ -19,6 +19,7 @@ type OverviewProps = {
 };
 
 const Overview = ({ startDate, endDate }: OverviewProps) => {
+  const { t } = useTranslation();
   const { meals } = useMeals({
     startDate,
     endDate,

@@ -9,6 +9,7 @@ import { QueryProvider } from "../query/QueryProvider";
 import { StatusBar } from "expo-status-bar";
 import "../i18n";
 import React from "react";
+import { LanguageProvider } from '../i18n/LanguageProvider';
 
 const InitialLayout = () => {
   const { colorScheme } = useColorScheme();
@@ -16,7 +17,7 @@ const InitialLayout = () => {
   const navigation = useNavigation();
 
   return (
-    <>
+    <LanguageProvider>
       <QueryProvider>
         <ThemeProvider value={colorScheme === "dark" ? DarkTheme : LightTheme}>
           <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
@@ -79,7 +80,7 @@ const InitialLayout = () => {
           </Stack>
         </ThemeProvider>
       </QueryProvider>
-    </>
+    </LanguageProvider>
   );
 };
 

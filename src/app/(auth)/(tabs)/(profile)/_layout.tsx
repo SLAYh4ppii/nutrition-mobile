@@ -1,9 +1,23 @@
 import { Stack } from "expo-router/stack";
+import { useTranslation } from "react-i18next";
 
 const ProfileStackLayout = () => {
+  const { t } = useTranslation();
+
   return (
     <Stack>
-      <Stack.Screen name="index" options={{ title: "Profile" }} />
+      <Stack.Screen 
+        name="index" 
+        options={{ 
+          title: t("profile.HEADER_TITLE")
+        }} 
+      />
+      <Stack.Screen 
+        name="language" 
+        options={{ 
+          title: t("profile.LANGUAGE")
+        }} 
+      />
     </Stack>
   );
 };

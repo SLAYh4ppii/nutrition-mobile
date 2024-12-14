@@ -1,5 +1,3 @@
-import Overview from "@/src/components/Overview";
-
 const tr = {
   home: {
     HEADER_TITLE: "Ana Menü",
@@ -16,6 +14,7 @@ const tr = {
     description: "Bu hakkında sayfası",
   },
   profile: {
+    HEADER_TITLE: "Profil",
     PERSONAL_INFORMATION: "Kişisel Bilgiler",
     APP_SETTINGS: "Uygulama Ayarları",
     CONTACT_US: "Bize Ulaşın",
@@ -48,7 +47,7 @@ const tr = {
   },
   Meals: {
     NO_RECORDS: "Kayıt bulunamadı",
-    MORE_RECORDS: "+{count} daha fazla kayıt",
+    MORE_RECORDS: "+{{count}} daha fazla kayıt",
     BREAKFAST: "🥞 Kahvaltı",
     LUNCH: "🥘 Öğle Yemeği",
     DINNER: "🍲 Akşam Yemeği",
@@ -58,6 +57,21 @@ const tr = {
     UPDATE_WEIGHT: "Kilo Güncelle",
     UPDATE_WEIGHT_MESSAGE:
       "Kilonuzu {currentValue} kg olarak güncellemek istediğinize emin misiniz?",
+  },
+  login: {
+    WELCOME_BACK: "Tekrar Hoşgeldiniz!",
+    EMAIL_ADDRESS: "E-posta Adresi",
+    PASSWORD: "Şifre",
+    LOGIN: "Giriş Yap",
+    REMEMBER_ME: "Beni Hatırla",
+    DONT_HAVE_ACCOUNT: "Hesabınız yok mu?",
+    SIGN_UP: "Kayıt Ol!",
+    FORGOT_PASSWORD: "Şifrenizi mi unuttunuz?",
+    RESET_PASSWORD: "Şifreyi sıfırla",
+    TERMS_CONDITIONS: "Devam ederek",
+    TERMS_OF_SERVICE: "Kullanım Koşulları",
+    PRIVACY_POLICY: "Gizlilik Politikası",
+    AND: "ve",
   },
 };
 

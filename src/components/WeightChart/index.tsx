@@ -12,15 +12,13 @@ import {
   Text,
 } from "react-native-svg";
 
-const GuideLine = ({ y }: { y: number }) => {
-  const height = y === 0 ? 30 : y === 200 ? 170 : y;
-
+const GuideLine = ({ y, width }: { y: number; width: number }) => {
   return (
     <Line
       x1="0"
-      y1={height}
-      x2="1000"
-      y2={height}
+      y1={y}
+      x2={width}
+      y2={y}
       stroke="lightgray"
       strokeWidth={0.5}
     />
@@ -30,15 +28,15 @@ const GuideLine = ({ y }: { y: number }) => {
 const generatePath = (data: WeightHistory[]) => {
   const maxWeight = Math.max(...data.map((item) => item.newWeight));
   const minWeight = Math.min(...data.map((item) => item.newWeight));
+  const padding = (maxWeight - minWeight) * 0.1; // Add 10% padding
 
-  const weightRange = maxWeight - minWeight;
+  const weightRange = (maxWeight + padding) - (minWeight - padding);
 
   const x = (index: number) => index * 50 + 30;
 
   const y = (weight: number) => {
-    const percentage = (weight - minWeight) / weightRange;
-    const pointY = 200 - percentage * 200;
-    return pointY === 0 ? 30 : pointY === 200 ? 170 : pointY;
+    const percentage = (weight - (minWeight - padding)) / weightRange;
+    return 170 - (percentage * 140); // Use 140 as range to leave space for labels
   };
 
   return data
@@ -51,16 +49,15 @@ const generatePath = (data: WeightHistory[]) => {
 const generateCirclePoints = (data: WeightHistory[]) => {
   const maxWeight = Math.max(...data.map((item) => item.newWeight));
   const minWeight = Math.min(...data.map((item) => item.newWeight));
+  const padding = (maxWeight - minWeight) * 0.1; // Add 10% padding
 
-  const weightRange = maxWeight - minWeight;
+  const weightRange = (maxWeight + padding) - (minWeight - padding);
 
   const x = (index: number) => index * 50 + 30;
 
   const y = (weight: number) => {
-    const percentage = (weight - minWeight) / weightRange;
-
-    const pointY = 200 - percentage * 200;
-    return pointY === 0 ? 30 : pointY === 200 ? 170 : pointY;
+    const percentage = (weight - (minWeight - padding)) / weightRange;
+    return 170 - (percentage * 140); // Use 140 as range to leave space for labels
   };
 
   return data.map((item, index) => {
@@ -72,9 +69,16 @@ const generateCirclePoints = (data: WeightHistory[]) => {
 };
 
 const WeightChart = ({ data }: { data: WeightHistory[] }) => {
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
-  const CHART_WIDTH = data.length * 50 < width ? width : data.length * 50;
+  // Calculate exact width needed for the chart
+  // 50px spacing per point + 30px initial offset + 30px end padding
+  const CHART_WIDTH = Math.max(data.length * 50 + 60, width);
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return `${date.getDate()}/${date.getMonth() + 1}`;
+  };
 
   return (
     <View className="flex">
@@ -84,7 +88,7 @@ const WeightChart = ({ data }: { data: WeightHistory[] }) => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       >
-        <Svg width={CHART_WIDTH} height="200">
+        <Svg width={CHART_WIDTH} height="220">
           <Defs>
             <LinearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
               <Stop offset="0" stopColor="#4ade80" stopOpacity="0.4" />
@@ -93,8 +97,31 @@ const WeightChart = ({ data }: { data: WeightHistory[] }) => {
           </Defs>
           {[30, 65, 100, 135, 170].map((_, index) => {
             const y = _;
-            return <GuideLine key={index} y={y} />;
+            return <GuideLine key={index} y={y} width={CHART_WIDTH} />;
           })}
+          {generateCirclePoints(data).map((point, index) => (
+            <Fragment key={`vertical-${index}`}>
+              <Line
+                x1={point.x}
+                y1={30}
+                x2={point.x}
+                y2={170}
+                stroke="lightgray"
+                strokeWidth={0.5}
+                strokeDasharray="4,4"
+              />
+              <Text
+                x={point.x}
+                y={200}
+                fill="gray"
+                fontSize={10}
+                textAnchor="middle"
+                alignmentBaseline="middle"
+              >
+                {formatDate(data[index].createdAt)}
+              </Text>
+            </Fragment>
+          ))}
           <Path
             d={generatePath(data)}
             fill="url(#gradient)"
@@ -105,7 +132,6 @@ const WeightChart = ({ data }: { data: WeightHistory[] }) => {
             return (
               <Fragment key={index}>
                 <Circle
-                  key={index}
                   cx={point.x}
                   cy={point.y}
                   r={10}

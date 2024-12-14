@@ -1,20 +1,27 @@
 const en = {
   home: {
-    title: "Home",
-    description: "This is the home page",
+    HEADER_TITLE: "Home",
+    description: "Home menu page",
+    OVERVIEW: "Overview",
+    MEALS: "Meals",
+    DAILY_TIPS: "Daily Tips",
+    WATER_INTAKE: "Water Intake",
+    WEIGHT_UPDATE: "Update Weight",
+    ACTIVITIES: "Activities",
   },
   about: {
     title: "About",
-    description: "This is the about page",
+    description: "This is about page",
   },
   profile: {
+    HEADER_TITLE: "Profile",
     PERSONAL_INFORMATION: "Personal Information",
     APP_SETTINGS: "App Settings",
     CONTACT_US: "Contact Us",
     YEARS: "Years old",
     GENDER: {
-      MALE: "MALE",
-      FEMALE: "FEMALE",
+      MALE: "Male",
+      FEMALE: "Female",
     },
     UPDATE_PROFILE: "Update Profile",
     WEIGHT_HISTORY: "Weight History",
@@ -40,7 +47,7 @@ const en = {
   },
   Meals: {
     NO_RECORDS: "No records found",
-    MORE_RECORDS: "+{count} more records",
+    MORE_RECORDS: "+{{count}} more records",
     BREAKFAST: "🥞 Breakfast",
     LUNCH: "🥘 Lunch",
     DINNER: "🍲 Dinner",
@@ -50,6 +57,21 @@ const en = {
     UPDATE_WEIGHT: "Update Weight",
     UPDATE_WEIGHT_MESSAGE:
       "Are you sure you want to update your weight to {currentValue} kg?",
+  },
+  login: {
+    WELCOME_BACK: "Welcome back!",
+    EMAIL_ADDRESS: "Email Address",
+    PASSWORD: "Password",
+    LOGIN: "Login",
+    REMEMBER_ME: "Remember me",
+    DONT_HAVE_ACCOUNT: "Don't have an account?",
+    SIGN_UP: "Sign Up!",
+    FORGOT_PASSWORD: "Forgot your password?",
+    RESET_PASSWORD: "Reset password",
+    TERMS_CONDITIONS: "By continuing, you agree to our",
+    TERMS_OF_SERVICE: "Terms of Service",
+    PRIVACY_POLICY: "Privacy Policy",
+    AND: "and",
   },
 };
 
