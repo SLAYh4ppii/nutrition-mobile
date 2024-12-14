@@ -44,6 +44,7 @@ const en = {
     CAL: "cal",
     OK: "OK",
     CANCEL: "Cancel",
+    KG: "kg",
   },
   Meals: {
     NO_RECORDS: "No records found",
@@ -72,6 +73,10 @@ const en = {
     TERMS_OF_SERVICE: "Terms of Service",
     PRIVACY_POLICY: "Privacy Policy",
     AND: "and",
+  },
+  weightHistory: {
+    TITLE: "Weight History",
+    DESCRIPTION: "Your weight history will be displayed here.",
   },
 };
 

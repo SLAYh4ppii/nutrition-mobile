@@ -44,6 +44,7 @@ const tr = {
     CAL: "cal",
     OK: "Evet",
     CANCEL: "İptal",
+    KG: "kg",
   },
   Meals: {
     NO_RECORDS: "Kayıt bulunamadı",
@@ -72,6 +73,10 @@ const tr = {
     TERMS_OF_SERVICE: "Kullanım Koşulları",
     PRIVACY_POLICY: "Gizlilik Politikası",
     AND: "ve",
+  },
+  weightHistory: {
+    TITLE: "Kilo Geçmişi",
+    DESCRIPTION: "Kilo geçmişiniz burada görüntülenecektir.",
   },
 };
 

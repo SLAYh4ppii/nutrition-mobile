@@ -2,6 +2,11 @@ import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
 import en from "./locales/en";
 import tr from "./locales/tr";
+import it from "./locales/it";
+import zh from "./locales/zh";
+import fr from "./locales/fr";
+import es from "./locales/es";
+import de from "./locales/de";
 import "intl-pluralrules";
 import Storage from "../storage";
 import { useState, useEffect } from "react";
@@ -9,6 +14,11 @@ import { useState, useEffect } from "react";
 export const LANGUAGES = [
   { name: "English", originalName: "English", code: "en" },
   { name: "Turkish", originalName: "Türkçe", code: "tr" },
+  { name: "Italian", originalName: "Italiano", code: "it" },
+  { name: "Chinese", originalName: "中文", code: "zh" },
+  { name: "French", originalName: "Français", code: "fr" },
+  { name: "Spanish", originalName: "Español", code: "es" },
+  { name: "German", originalName: "Deutsch", code: "de" },
 ];
 
 const resources = {
@@ -17,6 +27,21 @@ const resources = {
   },
   tr: {
     translation: tr,
+  },
+  it: {
+    translation: it,
+  },
+  zh: {
+    translation: zh,
+  },
+  fr: {
+    translation: fr,
+  },
+  es: {
+    translation: es,
+  },
+  de: {
+    translation: de,
   },
 };
 

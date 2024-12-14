@@ -3,6 +3,7 @@ import WeightChart from "@/src/components/WeightChart";
 import useMe from "@/src/query/hooks/useMe";
 import { format } from "date-fns";
 import { Text, View } from "react-native";
+import { useTranslation } from "react-i18next";
 
 const Section = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -14,6 +15,7 @@ const Section = ({ children }: { children: React.ReactNode }) => {
 
 const WeightHistory = () => {
   const { me } = useMe();
+  const { t } = useTranslation();
 
   const filteredWeightHistory =
     me?.weightHistory
@@ -28,10 +30,10 @@ const WeightHistory = () => {
       <View className="gap-4">
         <Section>
           <Text className="text-lg font-bold text-black dark:text-white">
-            Weight History{" "}
+            {t('weightHistory.TITLE')}
           </Text>
           <Text className="text-sm text-gray-500 dark:text-gray-400">
-            Your weight history will be displayed here.
+            {t('weightHistory.DESCRIPTION')}
           </Text>
         </Section>
         <Section>
@@ -54,7 +56,7 @@ const WeightHistory = () => {
                   <Text>
                     {history.oldWeight - history.newWeight > 0 ? "↓" : "↑"}
                   </Text>
-                  {history.newWeight} <Text className="text-sm">kg</Text>
+                  {history.newWeight} <Text className="text-sm">{t('General.KG')}</Text>
                 </Text>
               </View>
             </View>

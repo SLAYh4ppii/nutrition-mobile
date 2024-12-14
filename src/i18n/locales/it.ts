@@ -1,0 +1,83 @@
+const it = {
+  home: {
+    HEADER_TITLE: "Home",
+    description: "Pagina del menu principale",
+    OVERVIEW: "Panoramica",
+    MEALS: "Pasti",
+    DAILY_TIPS: "Consigli Quotidiani",
+    WATER_INTAKE: "Consumo d'Acqua",
+    WEIGHT_UPDATE: "Aggiorna Peso",
+    ACTIVITIES: "Attività",
+  },
+  about: {
+    title: "Chi Siamo",
+    description: "Questa è la pagina chi siamo",
+  },
+  profile: {
+    HEADER_TITLE: "Profilo",
+    PERSONAL_INFORMATION: "Informazioni Personali",
+    APP_SETTINGS: "Impostazioni App",
+    CONTACT_US: "Contattaci",
+    YEARS: "Anni",
+    GENDER: {
+      MALE: "Maschio",
+      FEMALE: "Femmina",
+    },
+    UPDATE_PROFILE: "Aggiorna Profilo",
+    WEIGHT_HISTORY: "Storico Peso",
+    NOTIFICATIONS: "Notifiche",
+    DARK_MODE: "Modalità Scura",
+    LANGUAGE: "Lingua",
+    CALL_US: "Chiamaci",
+    EMAIL_US: "Inviaci un'Email",
+  },
+  Overview: {
+    TOTAL: "Totale",
+    REMAINING: "Rimanente",
+    EXCEEDED: "Superato",
+  },
+  General: {
+    CARBS: "Carboidrati",
+    PROTEIN: "Proteine",
+    FAT: "Grassi",
+    GR: "gr",
+    CAL: "cal",
+    OK: "OK",
+    CANCEL: "Annulla",
+    KG: "kg",
+  },
+  Meals: {
+    NO_RECORDS: "Nessun record trovato",
+    MORE_RECORDS: "+{{count}} altri record",
+    BREAKFAST: "🥞 Colazione",
+    LUNCH: "🥘 Pranzo",
+    DINNER: "🍲 Cena",
+  },
+  NumberSelector: {
+    UPDATE: "Aggiorna",
+    UPDATE_WEIGHT: "Aggiorna Peso",
+    UPDATE_WEIGHT_MESSAGE:
+      "Sei sicuro di voler aggiornare il tuo peso a {currentValue} kg?",
+  },
+  login: {
+    WELCOME_BACK: "Bentornato!",
+    EMAIL_ADDRESS: "Indirizzo Email",
+    PASSWORD: "Password",
+    LOGIN: "Accedi",
+    REMEMBER_ME: "Ricordami",
+    DONT_HAVE_ACCOUNT: "Non hai un account?",
+    SIGN_UP: "Registrati!",
+    FORGOT_PASSWORD: "Password dimenticata?",
+    RESET_PASSWORD: "Reimposta password",
+    TERMS_CONDITIONS: "Continuando, accetti i nostri",
+    TERMS_OF_SERVICE: "Termini di Servizio",
+    PRIVACY_POLICY: "Politica sulla Privacy",
+    AND: "e",
+  },
+  weightHistory: {
+    TITLE: "Storico Peso",
+    DESCRIPTION: "Il tuo storico del peso verrà visualizzato qui.",
+  },
+};
+
+export default it;

@@ -1,4 +1,5 @@
 import { eachDayOfInterval, format } from "date-fns";
+import { enUS, tr, it, zhCN, fr, es, de } from "date-fns/locale";
 import { useRef } from "react";
 import { Dimensions, FlatList, Pressable, Text, View } from "react-native";
 import Animated, {
@@ -13,6 +14,7 @@ import Animated, {
 import { Path, Svg } from "react-native-svg";
 import { DateItemProps, DatePickerSliderProps } from "./types";
 import { useColorScheme } from "nativewind";
+import { useTranslation } from "react-i18next";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -29,6 +31,32 @@ const DateItem = ({
   datesLength,
   onPress,
 }: DateItemProps) => {
+  const { i18n } = useTranslation();
+  
+  let locale = enUS;
+  switch(i18n.language) {
+    case 'tr':
+      locale = tr;
+      break;
+    case 'it':
+      locale = it;
+      break;
+    case 'zh':
+      locale = zhCN;
+      break;
+    case 'fr':
+      locale = fr;
+      break;
+    case 'es':
+      locale = es;
+      break;
+    case 'de':
+      locale = de;
+      break;
+    default:
+      locale = enUS;
+  }
+
   return (
     <Pressable
       onPressOut={onPress}
@@ -44,7 +72,7 @@ const DateItem = ({
         {format(currentDate, "dd")}
       </Text>
       <Text className="text-md font-semibold color-white dark:color-black">
-        {format(currentDate, "EEE")}
+        {format(currentDate, "EEE", { locale })}
       </Text>
     </Pressable>
   );
