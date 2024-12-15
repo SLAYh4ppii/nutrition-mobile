@@ -46,6 +46,7 @@ const Register = () => {
   useEffect(() => {
     // error && Alert.alert("Error", error.message);
     if (error) {
+      console.log(error.message);
       Alert.alert("Error", error.message);
       pagerRef.current?.setPage(0);
       setActiveStep(0);

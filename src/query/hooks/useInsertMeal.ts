@@ -13,9 +13,11 @@ type MutationResponse = {
 const useInsertMeal = ({
   foods,
   mealTime,
+  date
 }: {
   foods: FoodToInsert[];
   mealTime: string;
+  date: Date;
 }) => {
   const { mutate, isPending, isSuccess } = useMutation<
     MutationResponse,
@@ -23,6 +25,7 @@ const useInsertMeal = ({
     {
       foods: any;
       mealTime: string;
+      date: Date;
     }
   >({
     mutationFn: insertMeal,
@@ -40,7 +43,7 @@ const useInsertMeal = ({
   });
 
   return {
-    insertMeal: () => mutate({ foods, mealTime }),
+    insertMeal: () => mutate({ foods, mealTime, date }),
     isPending,
     isSuccess,
   };

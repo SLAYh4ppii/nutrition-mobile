@@ -28,8 +28,8 @@ function useDateRange(mode: "daily" | "weekly" | "monthly") {
         endDate = endOfDay(date);
         break;
       case "weekly":
-        startDate = startOfWeek(date);
-        endDate = endOfWeek(date);
+        startDate = startOfWeek(date, { weekStartsOn: 1 }); // 1 = Monday
+        endDate = endOfWeek(date, { weekStartsOn: 1 }); // 1 = Monday
         break;
       case "monthly":
         startDate = startOfMonth(date);

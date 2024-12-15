@@ -13,9 +13,17 @@ import { useTranslation } from "react-i18next";
 
 const MAX_RECORDS_TO_SHOW = 3;
 
-const MealHeader = ({ title, calories, mealTime }: MealsProps) => {
+// Header component for each meal section showing title, calories and add button
+const MealHeader = ({ title, calories, mealTime, startDate, endDate }: MealsProps) => {
   const { colorScheme } = useColorScheme();
   const { t } = useTranslation();
+
+  const handleAddMeal = () => {
+    router.push({
+      pathname: `/addMeal`,
+      params: { mealTime, startDate, endDate }
+    });
+  };
 
   return (
     <View className="flex flex-row items-center justify-between rounded-lg bg-gray-100 px-2 dark:bg-gray-700">
@@ -25,6 +33,7 @@ const MealHeader = ({ title, calories, mealTime }: MealsProps) => {
           {Math.round(calories)} {t("General.CAL")}
         </Text>
       </Text>
+      
       <IconButton
         icon={
           <Ionicons
@@ -33,17 +42,16 @@ const MealHeader = ({ title, calories, mealTime }: MealsProps) => {
             color={colorScheme === "dark" ? "white" : "black"}
           />
         }
-        onPress={() => {
-          router.push(`/addMeal?mealTime=${mealTime}`);
-        }}
+        onPress={handleAddMeal}
       />
     </View>
   );
 };
 
+// Individual meal item showing food details
 type MealItemProps = {
   title: string;
-  calories: number;
+  calories: number; 
   image: string;
   description: string;
   onPress: () => void;
@@ -100,6 +108,7 @@ const MealItem = ({
   );
 };
 
+// Shown when no meals are recorded
 const NoRecords = () => {
   const { t } = useTranslation();
   return (
@@ -111,6 +120,7 @@ const NoRecords = () => {
   );
 };
 
+// Shows count of additional records beyond display limit
 const MoreRecords = ({ count }: { count: number }) => {
   const { t } = useTranslation();
   return (
@@ -122,6 +132,7 @@ const MoreRecords = ({ count }: { count: number }) => {
   );
 };
 
+// Section component for each meal type (breakfast/lunch/dinner)
 const MealSection = ({
   mealType,
   meals,
@@ -138,6 +149,13 @@ const MealSection = ({
   };
 
   const mealData = meals[mealType] || [];
+  const sortedMeals = mealData
+    .sort((a, b) => b.energy - a.energy)
+    .slice(0, MAX_RECORDS_TO_SHOW);
+
+  const handleMealPress = () => {
+    router.push(`/daySummary?startDate=${startDate}&endDate=${endDate}`);
+  };
 
   return (
     <>
@@ -145,28 +163,25 @@ const MealSection = ({
         title={mealIcons[mealType]}
         calories={energyNeed}
         mealTime={mealType}
+        startDate={startDate}
+        endDate={endDate}
       />
+      
       {mealData.length === 0 ? (
         <NoRecords />
       ) : (
-        mealData
-          .sort((a, b) => b.energy - a.energy)
-          .slice(0, MAX_RECORDS_TO_SHOW)
-          .map((meal) => (
-            <MealItem
-              key={meal.id}
-              title={meal.foodName}
-              calories={meal.energy}
-              image={meal.lowResImage}
-              description={meal.category_description}
-              onPress={() => {
-                router.push(
-                  `/daySummary?startDate=${startDate}&endDate=${endDate}`,
-                );
-              }}
-            />
-          ))
+        sortedMeals.map((meal) => (
+          <MealItem
+            key={meal.id}
+            title={meal.foodName}
+            calories={meal.energy}
+            image={meal.lowResImage}
+            description={meal.category_description}
+            onPress={handleMealPress}
+          />
+        ))
       )}
+
       {mealData.length > MAX_RECORDS_TO_SHOW && (
         <MoreRecords count={mealData.length - MAX_RECORDS_TO_SHOW} />
       )}
@@ -174,6 +189,7 @@ const MealSection = ({
   );
 };
 
+// Main Meals component
 const Meals = ({
   startDate,
   endDate,
@@ -181,22 +197,17 @@ const Meals = ({
   startDate: string;
   endDate: string;
 }) => {
-  const { meals } = useMeals({
-    startDate,
-    endDate,
-  });
-
+  const { meals } = useMeals({ startDate, endDate });
   const { me } = useMe();
 
-  if (!me) {
-    return null;
-  }
+  if (!me) return null;
 
+  // Calculate calorie distribution for each meal
   const totalCalories = me.nutritionalNeed?.calories || 0;
   const energyNeedPerMeal = {
-    breakfast: totalCalories * 0.3,
-    lunch: totalCalories * 0.4,
-    dinner: totalCalories * 0.3,
+    breakfast: totalCalories * 0.3, // 30% of daily calories
+    lunch: totalCalories * 0.4,     // 40% of daily calories
+    dinner: totalCalories * 0.3,    // 30% of daily calories
   };
 
   const mealTypes = ["breakfast", "lunch", "dinner"] as const;

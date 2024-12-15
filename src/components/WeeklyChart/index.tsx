@@ -1,5 +1,5 @@
 import useSummary from "@/src/query/hooks/useSummary";
-import { eachDayOfInterval, format } from "date-fns";
+import { addDays, eachDayOfInterval, format } from "date-fns";
 import { Text, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
@@ -57,9 +57,11 @@ const WeeklyChart = ({ dateRange }: WeeklyChartProps) => {
   });
 
   const { summary } = useSummary({
-    endDate: format(dateRange.end, "yyyy-MM-dd"),
+    endDate: format(addDays(dateRange.end, 1), "yyyy-MM-dd"),
     startDate: format(dateRange.start, "yyyy-MM-dd"),
   });
+
+  console.log(JSON.stringify(summary, null, 2));
 
   if (!summary) {
     return null;

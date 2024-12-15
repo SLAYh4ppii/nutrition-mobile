@@ -100,13 +100,17 @@ export type FoodToInsert = {
 export const insertMeal = async ({
   mealTime,
   foods,
+  date,
 }: {
   mealTime: string;
   foods: FoodToInsert[];
+  date: Date;
 }) => {
+
   const body = {
     mealTime,
     food: foods,
+    createdAt: date.toISOString(),
   };
 
   const response = await fetchWithToken(INSERT_MEAL_API, {

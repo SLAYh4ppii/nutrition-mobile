@@ -82,7 +82,7 @@ const MEAL_TIMES: Record<MealTime, { title: string }> = {
 };
 
 const AddMeals = () => {
-  const { mealTime } = useLocalSearchParams<{ mealTime: MealTime }>();
+  const { mealTime, startDate, endDate } = useLocalSearchParams<{ mealTime: MealTime, startDate: string, endDate: string }>();
 
   const [searchTerm, setSearchTerm] = useState<string>("");
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
@@ -97,6 +97,7 @@ const AddMeals = () => {
       multiplier: 1,
     })),
     mealTime: mealTime as string,
+    date: new Date(startDate) || new Date(),
   });
 
   return (

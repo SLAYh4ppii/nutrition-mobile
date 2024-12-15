@@ -83,6 +83,11 @@ const en = {
     title: "My Achievements 🏆",
     upcomingBadges: "Upcoming Badges 🎯",
   },
+  updateUser: {
+    HEADER_TITLE: "Update User",
+    DESCRIPTION: "To keep your weight history, please update your information.",
+    UPDATE_BUTTON: "Update",
+  },
 };
 
 export default en;

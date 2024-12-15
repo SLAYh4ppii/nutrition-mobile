@@ -42,6 +42,11 @@ const fetchRegister = async ({
     }
   }
 
+  //"message": "The following fields are required: firstName, lastName, gender"
+  if (data.message.startsWith("The following fields are required")) {
+    throw new Error("Please fill all fields");
+  }
+
   return {
     data: data as Response,
   };

@@ -83,6 +83,11 @@ const tr = {
     title: "Başarılarım 🏆",
     upcomingBadges: "Gelecek Badge 🎯",
   },
+  updateUser: {
+    HEADER_TITLE: "Bilgileri Güncelle",
+    DESCRIPTION: "Kilonuzu güncelleyerek kilo geçmişinizi koruyun.",
+    UPDATE_BUTTON: "Güncelle",
+  },
 };
 
 export default tr;

@@ -18,6 +18,18 @@ const ProfileStackLayout = () => {
           title: t("profile.LANGUAGE")
         }} 
       />
+      <Stack.Screen 
+        name="update"
+        options={{ 
+          title: t("updateUser.HEADER_TITLE")
+        }} 
+      />
+      <Stack.Screen 
+        name="weight"
+        options={{ 
+          title: t("weightHistory.TITLE")
+        }} 
+      />
     </Stack>
   );
 };

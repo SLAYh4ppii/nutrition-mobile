@@ -2,6 +2,8 @@ type MealsProps = {
   title: string;
   calories: number;
   mealTime: string;
+  startDate: string;
+  endDate: string;
 };
 
 type MealSectionProps = {

@@ -5,8 +5,11 @@ import useMe, { User } from "@/src/query/hooks/useMe";
 import { router } from "expo-router";
 import { useState } from "react";
 import { Text, View } from "react-native";
+import { useTranslation } from "react-i18next";
 
 const UpdateUser = () => {
+  const { t } = useTranslation();
+
   const { me, updateMe } = useMe();
   const [user, setUser] = useState<User>(me as User);
 
@@ -19,9 +22,11 @@ const UpdateUser = () => {
     <ScreenView padding>
       <View className="gap-4">
         <View className="gap-2 rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
-          <Text className="text-lg font-bold color-black dark:color-white">Update User</Text>
+          <Text className="text-lg font-bold color-black dark:color-white">
+            {t("updateUser.HEADER_TITLE")}
+          </Text>
           <Text className="text-sm text-gray-500 dark:text-gray-400">
-            To keep your weight history, please update your information.
+            {t("updateUser.DESCRIPTION")}
           </Text>
         </View>
         <View className="gap-4 rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
@@ -52,7 +57,7 @@ const UpdateUser = () => {
             postFix="cm"
             onChangeText={(text) => setUser({ ...user, height: Number(text) })}
           />
-          <Button label="Update" onPress={handleUpdate} />
+          <Button label={t("updateUser.UPDATE_BUTTON")} onPress={handleUpdate} />
         </View>
       </View>
     </ScreenView>
