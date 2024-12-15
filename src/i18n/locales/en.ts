@@ -47,6 +47,7 @@ const en = {
     LANGUAGE: "Language",
     CALL_US: "Call Us",
     EMAIL_US: "Email Us",
+    LOGOUT: "Logout",
   },
   Overview: {
     TOTAL: "Total",

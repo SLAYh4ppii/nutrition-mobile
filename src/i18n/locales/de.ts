@@ -47,6 +47,7 @@ const de = {
     LANGUAGE: "Sprache",
     CALL_US: "Anrufen",
     EMAIL_US: "E-Mail senden",
+    LOGOUT: "Ausloggen",
   },
   Overview: {
     TOTAL: "Gesamt",

@@ -47,6 +47,7 @@ const zh = {
     LANGUAGE: "语言",
     CALL_US: "致电我们",
     EMAIL_US: "发送邮件",
+    LOGOUT: "登出",
   },
   Overview: {
     TOTAL: "总计",

@@ -1,70 +1,132 @@
-# Nutirition Mobile
+# 🥗 Nutrition Mobile
 
-## Documentation
+> A smart nutrition tracking application powered by Expo React Native
 
-- [Project Scope](docs/PROJECT_SCOPE.md)
+## 📱 Features
 
-### Components
+### 🔍 Smart Food Detection
+- Real-time food recognition using ML Kit
+- Instant nutritional information calculation
+- Camera integration for food scanning
+- Food image analysis and processing
 
-- [BackgroundImage](docs/components//BackgroundImage.md)
-- [Button](docs/components//Button.md)
-- [Checkbox](docs/components//Checkbox.md)
-- [DatePicker](docs/components//DatePicker.md)
-- [FoodDetector](docs/components//FoodDetector.md)
-- [FoodListItem](docs/components//FoodListItem.md)
-- [Image](docs/components//Image.md)
-- [ScreenView](docs/components//ScreenView.md)
-- [SearchBar](docs/components//SearchBar.md)
-- [Seperator](docs/components//Seperator.md)
+### 🍽️ Meal Management
+- Track daily meals and portions
+- Detailed nutritional breakdown
+  - Calories
+  - Protein
+  - Carbohydrates
+  - Fat
+  - Vitamins & Minerals
+- Meal history and patterns
+- Custom meal additions
 
-## About
+### 📊 Analytics & Insights
+- Daily nutrition summary
+- Weekly progress tracking
+- Monthly nutrition analysis
+- Historical data visualization
+- Personalized nutrition goals
 
-### Description
-
-This is a mobile application that allows users to track their daily nutrition intake. Users can input their daily meals and the app will calculate the total calories, protein, fat, and carbohydrates consumed. The app will also provide a summary of the user's daily nutrition intake.
-
-### Features
-
+### 👤 Profile Management
 - User authentication
-- Add meals
-- View daily nutrition summary
-- View weekly nutrition summary
-- View monthly nutrition summary
-- View nutrition history
+- Personal goals setting
+- Dietary preferences
+- Progress tracking
 
-### Technologies
+### 🌍 Multi-language Support
+- English
+- German
+- Spanish
+- French
+- Italian
+- Turkish
 
-- React Native (Expo)
-- Zustand
-- ML Kit
-- Expo Router
-- React Query
-- Flash List
-- EAS Build
-- EAS Submit
-- EAS Update
+## 🧩 Components
 
-### Development
+### Core Components
+- `BackgroundImage` - Customizable background wrapper
+- `Button` - Reusable button component
+- `Checkbox` - Interactive checkbox element
+- `DatePicker` - Date selection component
+- `FoodDetector` - ML-powered food recognition
+- `FoodListItem` - Food item display component
+- `Image` - Enhanced image component
+- `ScreenView` - Screen container component
+- `SearchBar` - Food search functionality
+- `Separator` - Visual divider component
 
-### Installation
+### Screens
+- Profile Screen (`/screens/profile`)
+- Camera Screen (`/screens/camera`)
+- Meal Tracking Screen
+- Analytics Dashboard
+- Settings Screen
 
-1. Clone the repository
+## 🛠️ Technology Stack
 
+### Core
+- **React Native (Expo)** - Mobile framework
+- **TypeScript** - Type safety
+- **Expo Router** - Navigation
+- **Zustand** - State management
+
+### Performance
+- **React Query** - Data fetching
+- **Flash List** - High-performance lists
+- **ML Kit** - Machine learning capabilities
+
+### Development & Deployment
+- **EAS Build** - Build system
+- **EAS Submit** - App submission
+- **EAS Update** - OTA updates
+
+## 📦 Installation
+
+1. **Clone the Repository**
 ```bash
 git clone git@github.com:denizyesilirmak/nutrition-mobile.git
 ```
 
-2. Install dependencies
-
+2. **Install Dependencies**
 ```bash
 cd nutrition-mobile
 npm install
 ```
 
-3. Start the app
-
+3. **Start Development**
 ```bash
+# Start the development server
 npm start
+
+# Run on iOS
 npx run:ios --device
+
+# Run on Android
 npx run:android --device
 ```
+
+## 📚 Documentation
+
+Detailed documentation available for:
+- [Project Scope](docs/PROJECT_SCOPE.md)
+- [Component Documentation](docs/components/)
+- [API Reference](docs/api/)
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our contributing guidelines for details.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🔗 Links
+
+- [Repository](https://github.com/denizyesilirmak/nutrition-mobile)
+- [Issue Tracker](https://github.com/denizyesilirmak/nutrition-mobile/issues)
+- [Documentation](docs/)
+
+---
+
+<p align="center">Made with ❤️ for better nutrition tracking</p>

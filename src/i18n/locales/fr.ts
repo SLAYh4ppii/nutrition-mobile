@@ -47,6 +47,7 @@ const fr = {
     LANGUAGE: "Langue",
     CALL_US: "Nous appeler",
     EMAIL_US: "Nous envoyer un email",
+    LOGOUT: "Déconnexion",
   },
   Overview: {
     TOTAL: "Total",

@@ -47,6 +47,7 @@ const tr = {
     LANGUAGE: "Dil",
     CALL_US: "Bizi Arayın",
     EMAIL_US: "Bize E-Posta Gönderin",
+    LOGOUT: "Çıkış Yap",
   },
   Overview: {
     TOTAL: "Toplam",

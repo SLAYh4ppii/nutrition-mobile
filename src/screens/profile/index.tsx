@@ -1,6 +1,7 @@
 import DarkModeToggle from "@/src/components/DarkModeToggle";
 import ScreenView from "@/src/components/ScreenView";
 import useMe from "@/src/query/hooks/useMe";
+import Storage from "@/src/storage";
 import { calculateBMI, getBmiCategory } from "@/src/utils/bmi";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -83,6 +84,12 @@ const Profile = () => {
   if (!me) {
     return <Text>Error loading profile</Text>;
   }
+
+  const logout = () => {
+    console.log("logout");
+    Storage.clear();
+    router.replace("/login");
+  };
 
   return (
     <ScreenView scrollable>
@@ -172,6 +179,17 @@ const Profile = () => {
             leftIcon="mail-outline"
             text={t("profile.EMAIL_US")}
             rightIcon="mail"
+          />
+        </Container>
+
+        <Container>
+          <Section
+            leftIcon="log-out-outline"
+            text={t("profile.LOGOUT")}
+            rightIcon="chevron-forward"
+            onPress={() => {
+              logout();
+            }}
           />
         </Container>
       </View>

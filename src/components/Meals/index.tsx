@@ -172,7 +172,7 @@ const MealSection = ({
       ) : (
         sortedMeals.map((meal) => (
           <MealItem
-            key={meal.id}
+            key={meal.id + Math.random()}
             title={meal.foodName}
             calories={meal.energy}
             image={meal.lowResImage}
