@@ -8,6 +8,23 @@ const es = {
     WATER_INTAKE: "Consumo de agua",
     WEIGHT_UPDATE: "Actualizar peso",
     ACTIVITIES: "Actividades",
+    addMeal: {
+      HEADER_TITLE: "Añadir comida",
+      MEASUREMENTS: {
+        SERVING: "Porción",
+        OUNCE: "Onza",
+        GRAM: "Gramo",
+        SLICES: "Rebanadas",
+        DOZEN: "Docena",
+        BOWL: "Tazón",
+        PORTION: "Porción",
+        PLATE: "Plato",
+        CUP: "Taza",
+        SLICE: "Rebanada",
+        WEIGHT: "Peso",
+        PIECE: "Pieza",
+      }
+    },
   },
   about: {
     title: "Acerca de",
@@ -76,6 +93,21 @@ const es = {
   weightHistory: {
     TITLE: "Historial de peso",
     DESCRIPTION: "Su historial de peso se mostrará aquí.",
+  },
+  achievements: {
+    HEADER_TITLE: "Logros",
+    title: "Mis logros 🏆",
+    upcomingBadges: "Próximas insignias 🎯",
+  },
+  updateUser: {
+    HEADER_TITLE: "Actualizar usuario",
+    DESCRIPTION: "Para mantener su historial de peso, actualice su información.",
+    UPDATE_BUTTON: "Actualizar",
+  },
+  aiRecomendation: {
+    title: "Recomendación de IA",
+    description: "Nutri Guide está generando un plan de comidas personalizado para ti.",
+    description2: "Por favor, espere un momento.",
   },
 };
 

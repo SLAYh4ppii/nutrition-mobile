@@ -22,6 +22,7 @@ const tr = {
         CUP: "Kupa",
         SLICE: "Dilim",
         WEIGHT: "Ağırlık",
+        PIECE: "Parça",
       }
     },
   },
@@ -103,6 +104,11 @@ const tr = {
     HEADER_TITLE: "Bilgileri Güncelle",
     DESCRIPTION: "Kilonuzu güncelleyerek kilo geçmişinizi koruyun.",
     UPDATE_BUTTON: "Güncelle",
+  },
+  aiRecomendation: {
+    title: "AI Önerisi",
+    description: "Nutri Guide size özel bir yemek planı oluşturuyor.",
+    description2: "Lütfen biraz bekleyin.",
   },
 };
 

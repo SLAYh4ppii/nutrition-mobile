@@ -10,6 +10,20 @@ const en = {
     ACTIVITIES: "Activities",
     addMeal: {
       HEADER_TITLE: "Add Meal",
+      MEASUREMENTS: {
+        SERVING: "Serving",
+        OUNCE: "Ounce",
+        GRAM: "Gram",
+        SLICES: "Slices",
+        DOZEN: "Dozen",
+        BOWL: "Bowl",
+        PORTION: "Portion",
+        PLATE: "Plate",
+        CUP: "Cup",
+        SLICE: "Slice",
+        WEIGHT: "Weight",
+        PIECE: "Piece",
+      }
     },
   },
   about: {
@@ -90,6 +104,11 @@ const en = {
     HEADER_TITLE: "Update User",
     DESCRIPTION: "To keep your weight history, please update your information.",
     UPDATE_BUTTON: "Update",
+  },
+  aiRecomendation: {
+    title: "AI Recommendation",
+    description: "Nutri Guide is generating a personalized meal plan for you.",
+    description2: "Please wait a moment.",
   },
 };
 

@@ -42,7 +42,7 @@ const DailyChart = ({ dateRange }: { dateRange: { start: Date; end: Date } }) =>
   return (
     <View className="flex-1 items-center">
       {dayData ? (
-        <Animated.View style={[animatedStyle]} className="w-full gap-8 p-4">
+        <Animated.View  className="w-full gap-8 p-4">
           <View className="flex-row items-center justify-between rounded-lg border border-gray-200 p-4 dark:border-gray-700">
             <View className="items-center">
               <Text className="text-xl font-bold text-yellow-600 dark:text-yellow-400">Fat</Text>

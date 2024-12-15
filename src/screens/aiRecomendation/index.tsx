@@ -17,6 +17,7 @@ import Animated, {
 import { useLocalSearchParams } from "expo-router";
 import useAiRecomendation from "@/src/query/hooks/useAiRecomendation";
 import AiRecommendationView from "@/src/components/AiRecomendation";
+import { useTranslation } from "react-i18next";
 
 const MAX_ROTATING_IMAGES = 5;
 
@@ -84,6 +85,8 @@ const AiRecommendation = () => {
   const boxSize = width - 32;
   const scaleSV = useSharedValue(1);
   const scaleUpSV = useSharedValue(0.7);
+
+  const { t } = useTranslation();
 
   const params = useLocalSearchParams<{ startDate: string; endDate: string }>();
 
@@ -173,13 +176,13 @@ const AiRecommendation = () => {
 
       <Animated.View className="mt-4" style={textFadeInAnimatedStyle}>
         <Text className="text-center text-xl font-semibold text-black dark:text-white">
-          Your AI Recommendation
+          {t("aiRecomendation.title")}
         </Text>
         <Text className="text-center text-sm text-gray-600 dark:text-gray-400">
-          Nutri Guide is generating a personalized meal plan for you.
+          {t("aiRecomendation.description")}
         </Text>
         <Text className="text-center text-sm text-gray-600 dark:text-gray-400">
-          Please wait a moment.
+          {t("aiRecomendation.description")}
         </Text>
       </Animated.View>
 

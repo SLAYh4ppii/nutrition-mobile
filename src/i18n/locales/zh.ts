@@ -8,6 +8,23 @@ const zh = {
     WATER_INTAKE: "饮水量",
     WEIGHT_UPDATE: "更新体重",
     ACTIVITIES: "活动",
+    addMeal: {
+      HEADER_TITLE: "添加餐食",
+      MEASUREMENTS: {
+        SERVING: "份量",
+        OUNCE: "盎司",
+        GRAM: "克",
+        SLICES: "片",
+        DOZEN: "打",
+        BOWL: "碗",
+        PORTION: "份",
+        PLATE: "盘",
+        CUP: "杯",
+        SLICE: "片",
+        WEIGHT: "重量",
+        PIECE: "个",
+      }
+    },
   },
   about: {
     title: "关于",
@@ -76,6 +93,21 @@ const zh = {
   weightHistory: {
     TITLE: "体重历史",
     DESCRIPTION: "您的体重历史将显示在这里。",
+  },
+  achievements: {
+    HEADER_TITLE: "成就",
+    title: "我的成就 🏆",
+    upcomingBadges: "即将获得的徽章 🎯",
+  },
+  updateUser: {
+    HEADER_TITLE: "更新用户",
+    DESCRIPTION: "为了保持您的体重记录，请更新您的信息。",
+    UPDATE_BUTTON: "更新",
+  },
+  aiRecomendation: {
+    title: "AI推荐",
+    description: "Nutri Guide正在为您生成个性化餐食计划。",
+    description2: "请稍等片刻。",
   },
 };
 

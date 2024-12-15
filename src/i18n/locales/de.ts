@@ -8,6 +8,23 @@ const de = {
     WATER_INTAKE: "Wasseraufnahme",
     WEIGHT_UPDATE: "Gewicht aktualisieren",
     ACTIVITIES: "Aktivitäten",
+    addMeal: {
+      HEADER_TITLE: "Mahlzeit hinzufügen",
+      MEASUREMENTS: {
+        SERVING: "Portion",
+        OUNCE: "Unze",
+        GRAM: "Gramm",
+        SLICES: "Scheiben",
+        DOZEN: "Dutzend",
+        BOWL: "Schüssel",
+        PORTION: "Portion",
+        PLATE: "Teller",
+        CUP: "Tasse",
+        SLICE: "Scheibe",
+        WEIGHT: "Gewicht",
+        PIECE: "Stück",
+      }
+    },
   },
   about: {
     title: "Über uns",
@@ -76,6 +93,21 @@ const de = {
   weightHistory: {
     TITLE: "Gewichtsverlauf",
     DESCRIPTION: "Ihr Gewichtsverlauf wird hier angezeigt.",
+  },
+  achievements: {
+    HEADER_TITLE: "Erfolge",
+    title: "Meine Erfolge 🏆",
+    upcomingBadges: "Kommende Abzeichen 🎯",
+  },
+  updateUser: {
+    HEADER_TITLE: "Benutzer aktualisieren",
+    DESCRIPTION: "Um Ihren Gewichtsverlauf zu behalten, aktualisieren Sie bitte Ihre Informationen.",
+    UPDATE_BUTTON: "Aktualisieren",
+  },
+  aiRecomendation: {
+    title: "AI Empfehlung",
+    description: "Nutri Guide erstellt Ihnen ein persönliches Mahlzeitenplan.",
+    description2: "Bitte warten Sie kurz.",
   },
 };
 
