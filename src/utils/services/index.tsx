@@ -107,6 +107,8 @@ export const insertMeal = async ({
   date: Date;
 }) => {
 
+  console.log(foods);
+
   const body = {
     mealTime,
     food: foods,

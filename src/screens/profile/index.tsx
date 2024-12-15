@@ -121,7 +121,7 @@ const Profile = () => {
           <Seperator />
           <Section
             leftIcon="man-outline"
-            text={`${calculateBMI(me)} BMI - ${getBmiCategory(Number(calculateBMI(me)))}`}
+            text={`${calculateBMI(me)} BMI - ${getBmiCategory(Number(calculateBMI(me)) || 0)}`}
           />
           <Seperator />
           <Section
@@ -143,11 +143,6 @@ const Profile = () => {
         </Text>
         <Container>
           <Section
-            leftIcon="notifications-outline"
-            text={t("profile.NOTIFICATIONS")}
-          />
-          <Seperator />
-          <Section
             leftIcon="moon-outline"
             text={t("profile.DARK_MODE")}
             rightComponent={
@@ -163,22 +158,6 @@ const Profile = () => {
             text={t("profile.LANGUAGE")}
             rightIcon="chevron-forward"
             onPress={() => router.push("/language")}
-          />
-        </Container>
-        <Text className="text-xl font-bold dark:text-white">
-          {t("profile.CONTACT_US")}
-        </Text>
-        <Container>
-          <Section
-            leftIcon="call-outline"
-            text={t("profile.CALL_US")}
-            rightIcon="call"
-          />
-          <Seperator />
-          <Section
-            leftIcon="mail-outline"
-            text={t("profile.EMAIL_US")}
-            rightIcon="mail"
           />
         </Container>
 

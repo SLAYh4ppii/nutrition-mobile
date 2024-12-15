@@ -41,13 +41,13 @@ const SliderItem = ({
           <Button
             label="Create an Account"
             onPress={() => {
-              router.push("register");
+              router.push("/register");
             }}
           />
           <Button
             label="Login"
             onPress={() => {
-              router.push("login");
+              router.replace("/login");
             }}
           />
         </>

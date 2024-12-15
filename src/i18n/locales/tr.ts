@@ -27,6 +27,9 @@ const tr = {
         ADD_MEAL: "Öğün Ekle",
       }
     },
+    addWater: {
+      HEADER_TITLE: "Su Ekle",
+    }
   },
   about: {
     title: "Hakkında",

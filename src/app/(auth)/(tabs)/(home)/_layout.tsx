@@ -60,6 +60,7 @@ const HomeStackLayout = () => {
           gestureEnabled: true,
           animation: "flip",
           headerShown: true,
+          headerTitle: t("home.addWater.HEADER_TITLE"),
         }}
       />
       <Stack.Screen

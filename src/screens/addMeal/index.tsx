@@ -62,6 +62,8 @@ const AddMeals = () => {
       pathname: "/measurement",
       params: {
         food: food.id,
+        mealTime: mealTime,
+        startDate: startDate,
       },
     });
   };

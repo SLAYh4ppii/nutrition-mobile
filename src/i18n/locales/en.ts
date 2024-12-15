@@ -27,6 +27,9 @@ const en = {
         ADD_MEAL: "Add Meal",
       }
     },
+    addWater: {
+      HEADER_TITLE: "Add Water",
+    }
   },
   about: {
     title: "About",

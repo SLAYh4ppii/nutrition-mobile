@@ -47,19 +47,19 @@ const DailyChart = ({ dateRange }: { dateRange: { start: Date; end: Date } }) =>
             <View className="items-center">
               <Text className="text-xl font-bold text-yellow-600 dark:text-yellow-400">Fat</Text>
               <Text className="text-lg font-semibold text-gray-600 dark:text-gray-300">
-                {dayData.fat}g
+                {dayData.fat.toFixed(1)} g
               </Text>
             </View>
             <View className="items-center">
               <Text className="text-xl font-bold text-green-600 dark:text-green-400">Carbs</Text>
               <Text className="text-lg font-semibold text-gray-600 dark:text-gray-300">
-                {dayData.carbonhydrate}g
+                {dayData.carbonhydrate.toFixed(1)} g
               </Text>
             </View>
             <View className="items-center">
               <Text className="text-xl font-bold text-blue-600 dark:text-blue-400">Protein</Text>
               <Text className="text-lg font-semibold text-gray-600 dark:text-gray-300">
-                {dayData.protein}g
+                {dayData.protein.toFixed(1)} g
               </Text>
             </View>
           </View>

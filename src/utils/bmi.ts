@@ -6,18 +6,31 @@
 // - Extreme Obesity: 40.0+
 
 const getBmiCategory = (bmi: number) => {
+  // Handle invalid BMI values
+  if (isNaN(bmi) || bmi <= 0) {
+    return "Invalid BMI";
+  }
+
+  // Add debug logging to help diagnose the issue
+  console.log('Calculating BMI category for:', bmi);
+
+  // Use strict number comparisons
   if (bmi < 18.5) {
     return "Underweight";
-  } else if (bmi >= 18.5 && bmi <= 24.9) {
-    return "Normal";
-  } else if (bmi >= 25.0 && bmi <= 29.9) {
+  } else if (bmi >= 18.5 && bmi < 25.0) {
+    return "Normal"; 
+  } else if (bmi >= 25.0 && bmi < 30.0) {
     return "Overweight";
-  } else if (bmi >= 30.0 && bmi <= 34.9) {
+  } else if (bmi >= 30.0 && bmi < 35.0) {
     return "Obesity Class I";
-  } else if (bmi >= 35.0 && bmi <= 39.9) {
+  } else if (bmi >= 35.0 && bmi < 40.0) {
     return "Obesity Class II";
-  } else {
+  } else if (bmi >= 40.0) {
     return "Extreme Obesity";
+  } else {
+    // Fallback for any unexpected cases
+    console.warn('Unexpected BMI value:', bmi);
+    return "Invalid BMI";
   }
 };
 

@@ -1,12 +1,14 @@
 import ScreenView from "@/src/components/ScreenView";
 import useFoodDetails from "@/src/query/hooks/useFoodDetails";
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { useTranslation } from "react-i18next";
-import { Image, ImageSourcePropType, Pressable, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Image, ImageSourcePropType, Pressable, Text, TouchableOpacity, View } from "react-native";
 import { ServingIcon, OunceIcon, CupIcon, GramIcon, PieceIcon, SliceIcon, DozenIcon, BowlIcon, PortionIcon, PlateIcon } from "@/src/assets/icons";
 import { useColorScheme } from "nativewind";
 import { useEffect, useState } from "react";
 import Button from "@/src/components/Button";
+import addMeal from "@/src/app/(auth)/(tabs)/(home)/addMeal";
+import useInsertMeal from "@/src/query/hooks/useInsertMeal";
 
 type Measurement = {
     type: string;
@@ -29,12 +31,27 @@ const MeasurementIcons = {
 } as const;
 
 const MeasurementScreen = () => {
-    const { food } = useLocalSearchParams();
+    const { food, mealTime, startDate } = useLocalSearchParams();
     const { colorScheme } = useColorScheme();
     const { foodDetails } = useFoodDetails(food as string);
     const { t } = useTranslation();
-
     const [measurements, setMeasurements] = useState<Measurement[]>([]);
+
+    const calculateTotalWeight = () => {
+        return measurements.reduce((acc, measurement) => {
+            return acc + (measurement.amount * measurement.unit);
+        }, 0);
+    }
+
+    const { insertMeal } = useInsertMeal({
+        foods: [{
+            id: food as string,
+            multiplier: calculateTotalWeight() / 100
+        }],
+        mealTime: mealTime as string,
+        date: new Date(startDate) || new Date(),
+    });
+
 
     useEffect(() => {
         if (foodDetails?.measurements) {
@@ -47,13 +64,7 @@ const MeasurementScreen = () => {
         }
     }, [foodDetails]);
 
-    //calculate calories
-    const calculateTotalWeight = () => {
-        //measurement.amount * measurement.unit / 100;
-        return measurements.reduce((acc, measurement) => {
-            return acc + (measurement.amount * measurement.unit);
-        }, 0);
-    }
+
 
     const handleAmountChange = (type: string, amount: number) => {
         setMeasurements(prev => {
@@ -72,7 +83,9 @@ const MeasurementScreen = () => {
     return (
         <ScreenView padding scrollable>
             <View className="flex flex justify-between items-center gap-4">
-                <Text className="text-2xl font-bold">{foodDetails?.foodName}</Text>
+                <Text className="text-2xl font-bold text-black dark:text-white">
+                    {foodDetails?.foodName}
+                </Text>
                 <Image
                     className="w-full h-[160px] rounded-lg"
                     resizeMode="cover"
@@ -133,6 +146,14 @@ const MeasurementScreen = () => {
                         const totalWeight = calculateTotalWeight();
                         const multiplier = totalWeight / 100;
                         console.log(multiplier);
+
+                        if (totalWeight > 0 && multiplier > 0) {
+                            insertMeal();
+                            router.replace('/(auth)/(tabs)/(home)');
+                        }
+                        else {
+                            Alert.alert(t('home.addMeal.MEASUREMENTS.NO_MEASUREMENT'));
+                        }
                     }}
                 />
             </View>
