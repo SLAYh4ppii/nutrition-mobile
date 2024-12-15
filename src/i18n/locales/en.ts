@@ -23,6 +23,8 @@ const en = {
         SLICE: "Slice",
         WEIGHT: "Weight",
         PIECE: "Piece",
+        PACKAGE: "Package",
+        ADD_MEAL: "Add Meal",
       }
     },
   },
@@ -75,7 +77,7 @@ const en = {
     UPDATE: "Update",
     UPDATE_WEIGHT: "Update Weight",
     UPDATE_WEIGHT_MESSAGE:
-      "Are you sure you want to update your weight to {currentValue} kg?",
+      "Are you sure you want to update your weight to {{currentValue}} kg?",
   },
   login: {
     WELCOME_BACK: "Welcome back!",

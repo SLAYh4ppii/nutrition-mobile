@@ -2,10 +2,11 @@ import ScreenView from "@/src/components/ScreenView";
 import useFoodDetails from "@/src/query/hooks/useFoodDetails";
 import { useLocalSearchParams } from "expo-router";
 import { useTranslation } from "react-i18next";
-import { Image, ImageSourcePropType, Pressable, Text, View } from "react-native";
+import { Image, ImageSourcePropType, Pressable, Text, TouchableOpacity, View } from "react-native";
 import { ServingIcon, OunceIcon, CupIcon, GramIcon, PieceIcon, SliceIcon, DozenIcon, BowlIcon, PortionIcon, PlateIcon } from "@/src/assets/icons";
 import { useColorScheme } from "nativewind";
 import { useEffect, useState } from "react";
+import Button from "@/src/components/Button";
 
 type Measurement = {
     type: string;
@@ -46,6 +47,14 @@ const MeasurementScreen = () => {
         }
     }, [foodDetails]);
 
+    //calculate calories
+    const calculateTotalWeight = () => {
+        //measurement.amount * measurement.unit / 100;
+        return measurements.reduce((acc, measurement) => {
+            return acc + (measurement.amount * measurement.unit);
+        }, 0);
+    }
+
     const handleAmountChange = (type: string, amount: number) => {
         setMeasurements(prev => {
             return prev.map(measurement => {
@@ -65,7 +74,7 @@ const MeasurementScreen = () => {
             <View className="flex flex justify-between items-center gap-4">
                 <Text className="text-2xl font-bold">{foodDetails?.foodName}</Text>
                 <Image
-                    className="w-full h-[200px] rounded-lg"
+                    className="w-full h-[160px] rounded-lg"
                     resizeMode="cover"
                     source={{ uri: foodDetails?.highResImage }} />
 
@@ -75,7 +84,7 @@ const MeasurementScreen = () => {
                             <View className="flex w-full flex-row items-center justify-between bg-gray-100 p-4 rounded-lg dark:bg-gray-800">
                                 <View className="flex flex-row items-center">
                                     <Image
-                                        source={MeasurementIcons[measurement.type as keyof typeof MeasurementIcons]}
+                                        source={MeasurementIcons[measurement.type as keyof typeof MeasurementIcons] || MeasurementIcons.serving}
                                         resizeMode="cover"
                                         className="w-10 h-10 rounded-lg mr-4"
                                         style={{ tintColor: colorScheme === "dark" ? "white" : "black" }}
@@ -88,27 +97,44 @@ const MeasurementScreen = () => {
                                 </View>
 
                                 <View className="flex flex-row items-center gap-2">
-                                    <Pressable
+                                    <TouchableOpacity
                                         onPress={() => handleAmountChange(measurement.type, -1)}
-                                        className="bg-gray-200 p-4 rounded-lg">
+                                        className="bg-gray-200 px-4 py-2 rounded-lg">
                                         <Text className="text-2xl font-bold">-</Text>
-                                    </Pressable>
+                                    </TouchableOpacity>
                                     <View className="flex flex-col gap-2 w-10 items-center justify-center">
                                         <Text className="text-2xl font-bold text-black dark:text-white">
                                             {measurements.find(m => m.type === measurement.type)?.amount || 0}
                                         </Text>
                                     </View>
-                                    <Pressable 
-                                        onPress={() => handleAmountChange(measurement.type, 1)} 
-                                        className="bg-gray-200 p-4 rounded-lg">
+                                    <TouchableOpacity
+                                        onPress={() => handleAmountChange(measurement.type, 1)}
+                                        className="bg-gray-200 px-4 py-2 rounded-lg">
                                         <Text className="text-2xl font-bold">+</Text>
-                                    </Pressable>
+                                    </TouchableOpacity>
                                 </View>
                             </View>
                             <Text className="text-sm text-gray-500">{measurement.description}</Text>
                         </View>
                     ))}
                 </View>
+            </View>
+            <View className="flex flex-col mt-4 justify-center items-center gap-2">
+                <Text className="text-lg font-bold text-black dark:text-white">
+                    Total Weight: {calculateTotalWeight()} gr
+                </Text>
+                <Text className="text-lg font-bold text-black dark:text-white">
+                    Total Calories: {calculateTotalWeight() / 100 * foodDetails?.energy} kcal
+                </Text>
+                <Button
+                    label={t('home.addMeal.MEASUREMENTS.ADD_MEAL')}
+                    onPress={() => {
+                        //log total weight
+                        const totalWeight = calculateTotalWeight();
+                        const multiplier = totalWeight / 100;
+                        console.log(multiplier);
+                    }}
+                />
             </View>
         </ScreenView>
     )

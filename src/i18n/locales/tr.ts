@@ -23,6 +23,8 @@ const tr = {
         SLICE: "Dilim",
         WEIGHT: "Ağırlık",
         PIECE: "Parça",
+        PACKAGE: "Paket",
+        ADD_MEAL: "Öğün Ekle",
       }
     },
   },
@@ -75,7 +77,7 @@ const tr = {
     UPDATE: "Güncelle",
     UPDATE_WEIGHT: "Kilo Güncelle",
     UPDATE_WEIGHT_MESSAGE:
-      "Kilonuzu {currentValue} kg olarak güncellemek istediğinize emin misiniz?",
+      "Kilonuzu {{currentValue}} kg olarak güncellemek istediğinize emin misiniz?",
   },
   login: {
     WELCOME_BACK: "Tekrar Hoşgeldiniz!",
