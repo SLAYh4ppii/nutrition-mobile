@@ -23,10 +23,14 @@ type SquareProps = {
   isInCurrentMonth: boolean;
   date: Date;
   onPress?: () => void;
-  value?: number;
+  macros?: {
+    fat: number;
+    protein: number;
+    carbonhydrate: number;
+  };
 };
 
-const Square = ({ isInCurrentMonth, date, onPress, value }: SquareProps) => {
+const Square = ({ isInCurrentMonth, date, onPress, macros }: SquareProps) => {
   return (
     <View
       style={{
@@ -63,14 +67,34 @@ const Square = ({ isInCurrentMonth, date, onPress, value }: SquareProps) => {
             {format(date, "EE")}
           </Text>
         </View>
-        <View className="bg-blue border-1 h-2 w-8 rounded-full border border-gray-400 dark:border-gray-600">
-          <View
-            className="bg-blue h-full rounded-full bg-cyan-600 dark:bg-blue-300"
-            style={{
-              width: value ? `${(value / 10) * 100}%` : 0,
-            }}
-          ></View>
+
+        {/* Combined Macros Progress Bar */}
+        <View className="bg-blue border-1 h-2 w-10 overflow-hidden rounded-full border border-gray-400 dark:border-gray-600">
+          <View className="flex-row h-full">
+            {/* Carbs */}
+            <View
+              className="h-full bg-green-600 dark:bg-green-400"
+              style={{
+                width: macros ? `${macros.carbonhydrate}%` : "0%",
+              }}
+            />
+            {/* Protein */}
+            <View
+              className="h-full bg-blue-600 dark:bg-blue-400"
+              style={{
+                width: macros ? `${macros.protein}%` : "0%",
+              }}
+            />
+            {/* Fat */}
+            <View
+              className="h-full bg-yellow-600 dark:bg-yellow-400"
+              style={{
+                width: macros ? `${macros.fat}%` : "0%",
+              }}
+            />
+          </View>
         </View>
+
       </Pressable>
     </View>
   );
@@ -122,13 +146,14 @@ const Heatmap = ({ year, month, onPressDate }: HeatmapProps) => {
       {days.map((week, index) => (
         <Row key={index}>
           {week.map((day) => {
-            const valueOfDay = clamp(
-              (summary?.[formatDate(day, "yyyy-MM-dd")]?.calory /
-                me?.nutritionalNeed.calories!) *
-                10,
-              0,
-              10,
-            );
+            const dateKey = formatDate(day, "yyyy-MM-dd");
+            const dayData = summary?.[dateKey];
+
+            const macros = dayData ? {
+              fat: dayData.percentageFat,
+              protein: dayData.percentageProtein,
+              carbonhydrate: dayData.percentageCarbonhydrate,
+            } : undefined;
 
             return (
               <Square
@@ -136,7 +161,7 @@ const Heatmap = ({ year, month, onPressDate }: HeatmapProps) => {
                 isInCurrentMonth={isSameMonth(day, new Date(2024, month - 1))}
                 date={day}
                 onPress={() => onPressDate?.(day)}
-                value={valueOfDay}
+                macros={macros}
               />
             );
           })}

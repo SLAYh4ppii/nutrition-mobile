@@ -61,8 +61,6 @@ const WeeklyChart = ({ dateRange }: WeeklyChartProps) => {
     startDate: format(dateRange.start, "yyyy-MM-dd"),
   });
 
-  console.log(JSON.stringify(summary, null, 2));
-
   if (!summary) {
     return null;
   }

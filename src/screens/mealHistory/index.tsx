@@ -7,6 +7,7 @@ import useDateRange from "./utils/DateNavigator";
 import formatDate from "./utils/formatDate";
 import Heatmap from "@/src/components/Heatmap";
 import WeeklyChart from "@/src/components/WeeklyChart";
+import DailyChart from "@/src/components/DailyChart";
 
 type selectedTabType = {
   mode: "daily" | "weekly" | "monthly";
@@ -54,6 +55,14 @@ const MealHistory = () => {
       )}
       {selectedTab === "weekly" && (
         <WeeklyChart
+          dateRange={{
+            start: startDate,
+            end: endDate,
+          }}
+        />
+      )}
+      {selectedTab === "daily" && (
+        <DailyChart
           dateRange={{
             start: startDate,
             end: endDate,

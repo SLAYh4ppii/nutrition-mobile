@@ -2,11 +2,12 @@ import IconButton from "@/src/components/IconButton";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { Stack } from "expo-router/stack";
-import { t } from "i18next";
 import { useColorScheme } from "nativewind";
+import { useTranslation } from "react-i18next";
 
 const HomeStackLayout = () => {
   const { colorScheme } = useColorScheme();
+  const { t } = useTranslation();
 
   return (
     <Stack
@@ -39,7 +40,17 @@ const HomeStackLayout = () => {
       <Stack.Screen
         name="addMeal"
         options={{
-          presentation: "formSheet",
+          presentation: "modal",
+          headerShown: true,
+          headerTitle: t("home.addMeal.HEADER_TITLE"),
+        }}
+      />
+      <Stack.Screen
+        name="measurement"
+        options={{
+          headerTitle: "Measurements",
+          presentation: "modal",
+          headerShown: true,
         }}
       />
       <Stack.Screen

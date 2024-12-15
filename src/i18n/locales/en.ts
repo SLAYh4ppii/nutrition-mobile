@@ -8,6 +8,9 @@ const en = {
     WATER_INTAKE: "Water Intake",
     WEIGHT_UPDATE: "Update Weight",
     ACTIVITIES: "Activities",
+    addMeal: {
+      HEADER_TITLE: "Add Meal",
+    },
   },
   about: {
     title: "About",

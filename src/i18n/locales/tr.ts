@@ -8,6 +8,22 @@ const tr = {
     WATER_INTAKE: "Su Tüketimi",
     WEIGHT_UPDATE: "Kilo Güncelle",
     ACTIVITIES: "Aktiviteler",
+    addMeal: {
+      HEADER_TITLE: "Öğün Ekle",
+      MEASUREMENTS: {
+        SERVING: "Servis",
+        OUNCE: "Ons",
+        GRAM: "Gram",
+        SLICES: "Parça",
+        DOZEN: "Düzine",
+        BOWL: "Kase",
+        PORTION: "Porsiyon",
+        PLATE: "Tabak",
+        CUP: "Kupa",
+        SLICE: "Dilim",
+        WEIGHT: "Ağırlık",
+      }
+    },
   },
   about: {
     title: "Hakkında",

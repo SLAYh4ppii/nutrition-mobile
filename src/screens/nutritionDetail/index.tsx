@@ -6,7 +6,7 @@ import nutritionInfo from "./constants";
 const NutritionDetail = () => {
   const { nutrientId } = useLocalSearchParams();
 
-  console.log({ nutrientId });
+  //console.log({ nutrientId });
 
   return (
     <ScreenView scrollable padding>

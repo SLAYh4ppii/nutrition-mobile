@@ -67,7 +67,7 @@ export const fetchFoodSearch = async ({
   
   const data = (await response.json()) as PageResponse;
   
-  console.log(JSON.stringify(data, null, 2));
+  //console.log(JSON.stringify(data, null, 2));
   return {
     data: data.data,
     page: data.page,

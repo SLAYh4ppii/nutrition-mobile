@@ -35,6 +35,20 @@ import ProfileFilledIcon from "@/src/assets/icons/profile-filled.png";
 import AddFoodIcon from "@/src/assets/icons/add-food.png";
 import AddFoodFilledIcon from "@/src/assets/icons/add-food-filled.png";
 
+import ServingIcon from "@/src/assets/icons/serving.png";
+import OunceIcon from "@/src/assets/icons/ounce.png";
+import CupIcon from "@/src/assets/icons/cup.png";
+import GramIcon from "@/src/assets/icons/gram.png";
+import PieceIcon from "@/src/assets/icons/piece.png";
+import SliceIcon from "@/src/assets/icons/slice.png";
+import DozenIcon from "@/src/assets/icons/dozen.png";
+import BowlIcon from "@/src/assets/icons/bowl.png";
+import PortionIcon from "@/src/assets/icons/portion.png";
+import PlateIcon from "@/src/assets/icons/plate.png";
+
+
+
+
 export {
   EnergyIcon,
   FatIcon,
@@ -64,4 +78,14 @@ export {
   FoodsFilledIcon,
   AchievementsFilledIcon,
   ProfileFilledIcon,
+  ServingIcon,
+  OunceIcon,
+  CupIcon,
+  GramIcon,
+  PieceIcon,
+  SliceIcon,
+  DozenIcon,
+  BowlIcon,
+  PortionIcon,
+  PlateIcon,
 };
