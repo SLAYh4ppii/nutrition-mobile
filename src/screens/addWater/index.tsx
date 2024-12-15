@@ -120,6 +120,7 @@ const AddWater = () => {
             glassHeight.value = event.nativeEvent.layout.height;
           }}
           animatedProps={glassFillingProgress}
+          autoPlay={false}
         />
       </View>
     </View>
