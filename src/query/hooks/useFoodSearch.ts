@@ -15,9 +15,11 @@ export interface Datum {
 export const useFoodSearch = ({
   searchTerm,
   initialPage = 1,
+  initialData,
 }: {
   searchTerm: string;
   initialPage?: number;
+  initialData?: Datum[];
 }) => {
   const { data, isError, fetchNextPage, hasNextPage, isLoading } =
     useInfiniteQuery<
@@ -38,8 +40,11 @@ export const useFoodSearch = ({
     });
 
   const results = useMemo(() => {
+    if (initialData) {
+      return initialData;
+    }
     return data?.pages.flatMap((page) => page.data).filter(Boolean) ?? [];
-  }, [data]);
+  }, [data, initialData]);
 
   return {
     results,

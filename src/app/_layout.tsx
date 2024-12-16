@@ -69,6 +69,13 @@ const InitialLayout = () => {
               }}
             />
             <Stack.Screen
+              name="photoUpload"
+              options={{
+                presentation: "modal",
+                gestureEnabled: false,
+              }}
+            />
+            <Stack.Screen
               name="components"
               options={{
                 headerShown: true,

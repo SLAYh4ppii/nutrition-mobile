@@ -4,10 +4,13 @@ import {
   FOOD_SEARCH_API,
   INSERT_MEAL_API,
   MEALS_API,
+  SEARCH_FOOD_BY_IMAGE_API,
   SUMMARY_API,
 } from "@/src/constants/Api";
 import fetchWithToken from "../fetch";
 import { transformMeals } from "../transformMeals";
+import { Platform } from "react-native";
+import * as FileSystem from 'expo-file-system';
 
 // -----DAILY TIPS API-----
 
@@ -64,9 +67,9 @@ export const fetchFoodSearch = async ({
     `${FOOD_SEARCH_API}?query=${searchTerm.toLowerCase()}&page=${page}&limit=20`,
   );
 
-  
+
   const data = (await response.json()) as PageResponse;
-  
+
   //console.log(JSON.stringify(data, null, 2));
   return {
     data: data.data,
@@ -145,5 +148,28 @@ export const fetchAiRecommendation = async (date: string) => {
     `${AI_RECOMMENDATION_API}?date=${date}`,
   );
   const data = await response.json();
+  return data;
+};
+
+// Search Food by Image
+
+export const fetchSearchFoodByImage = async (image: string, onProgress: (progress: number) => void) => {
+  const uploader = FileSystem.createUploadTask(
+    SEARCH_FOOD_BY_IMAGE_API,
+    image,
+    {
+      fieldName: "image",
+      mimeType: "image/jpeg",
+      uploadType: FileSystem.FileSystemUploadType.MULTIPART,
+    },
+    (progress) => {
+      onProgress(progress.totalBytesSent / progress.totalBytesExpectedToSend);
+    },
+  );
+
+  const res = await uploader.uploadAsync();
+
+  const data = await res?.body ? JSON.parse(res.body) : null;
+
   return data;
 };
