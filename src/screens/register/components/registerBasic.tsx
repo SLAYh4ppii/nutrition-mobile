@@ -1,5 +1,8 @@
 import TextInput from "@/src/components/TextInput";
-import { Text, View } from "react-native";
+import { router } from "expo-router";
+import { Pressable, Text, View } from "react-native";
+import Button from "@/src/components/Button";
+import { Ionicons } from "@expo/vector-icons";
 
 const RegisterBasic = ({
   email,
@@ -91,6 +94,15 @@ const RegisterBasic = ({
         <Text className={`text-sm ${getErrorColor(passwordErrors.match)}`}>
           🔐 Passwords must match
         </Text>
+        <Pressable
+          onPress={() => router.replace("/login")}
+          className="items-center flex-row gap-2 justify-center rounded-md p-2 py-2 mt-4"
+        >
+          <Ionicons name="log-in" size={24} color="black" />
+          <Text className="text-sm text-black dark:text-white">
+            Already have an account? Login
+          </Text>
+        </Pressable>
       </View>
     </View>
   );

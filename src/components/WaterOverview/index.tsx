@@ -42,7 +42,10 @@ const WaterOverview = () => {
   return (
     <Pressable
       onPress={() => {
-        router.push("(auth)/(home)/addWater");
+        console.log("pressed");
+        router.push({
+          pathname: "/(auth)/(tabs)/(home)/addWater"
+        });
       }}
       className="overflow-hidden rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
     >

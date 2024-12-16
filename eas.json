@@ -17,6 +17,11 @@
       "distribution": "internal",
       "android": {
         "buildType": "apk"
+      },
+      "ios": {
+        "simulator": false,
+        "teamId": "234567890",
+        "bundleIdentifier": "com.nutrition.app"
       }
     },
     "production": {}

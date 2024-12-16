@@ -131,7 +131,7 @@ const Register = () => {
         </View>
       </PagerView>
       {activeStep < 3 && (
-        <>
+        <View className="items-center justify-end pb-8">
           <Stepper
             steps={["Account", "Personal", "Review"]}
             activeStep={activeStep}
@@ -154,7 +154,7 @@ const Register = () => {
               }
             }}
           />
-        </>
+        </View>
       )}
     </ScreenView>
   );
