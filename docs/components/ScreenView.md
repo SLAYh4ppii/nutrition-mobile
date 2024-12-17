@@ -1,30 +1,93 @@
 # ScreenView Component
 
-The `ScreenView` component is a flexible container for screens in React Native applications. It can optionally be scrollable and allows for custom styling.
+A flexible screen container component with scrolling capabilities and dark mode support.
+
+## Overview
+
+The ScreenView component serves as a base container for screen content, providing consistent styling and behavior across the application. It wraps content in a ScrollView with configurable scrolling, padding, and bounce effects.
 
 ## Props
 
-The component accepts the following props:
+| Prop       | Type         | Default | Description |
+|------------|--------------|---------|-------------|
+| children   | ReactNode    | -       | Content to be rendered inside the screen view |
+| scrollable | boolean      | false   | Whether the content can be scrolled |
+| padding    | boolean      | false   | Whether to add padding around the content |
+| bounces    | boolean      | false   | Whether the scroll view bounces at the edges |
 
-- `children`: React.ReactNode - The content to be displayed within the `ScreenView`. This can be any valid React node.
-- `scrollable`: boolean (optional) - Determines whether the content is scrollable. If `true`, the content can be scrolled; otherwise, it is fixed.
-- `style`: StyleProp<ViewStyle> (optional) - Custom styles to apply to the `ScreenView`. This can be any style object that is compatible with React Native's `ViewStyle`.
+## Features
+
+- Configurable scroll behavior
+- Dark mode support
+- Optional padding
+- Bounce effect control
+- Hidden scroll indicators
+- Flexible content container
+- Consistent background colors
+- Full height layout
 
 ## Usage
 
-Here's an example of how to use the `ScreenView` component:
+```tsx
+import ScreenView from '@components/ScreenView';
 
-```jsx
-import React from 'react';
-import { Text } from 'react-native';
-import ScreenView from './ScreenView';
+// Basic usage
+<ScreenView>
+  <Text>Screen content</Text>
+</ScreenView>
 
-const MyScreen = () => {
-  return (
-    <ScreenView scrollable={true} style={{ padding: 20 }}>
-      <Text>This is a scrollable screen.</Text>
-    </ScreenView>
-  );
-};
+// Scrollable with padding
+<ScreenView 
+  scrollable={true}
+  padding={true}
+>
+  <Text>Scrollable content with padding</Text>
+</ScreenView>
 
-export default MyScreen;
+// With bounce effect
+<ScreenView 
+  scrollable={true}
+  bounces={true}
+>
+  <Text>Content with bounce effect</Text>
+</ScreenView>
+```
+
+## Styling
+
+The component uses Tailwind CSS classes:
+
+### Main Container
+- `flex-1 bg-white dark:bg-black`
+  - Full height layout
+  - Light/dark background colors
+  - Flexible content area
+
+### Content Container
+- Dynamic classes based on props:
+  - Scrollable: `flex-1` when not scrollable
+  - Padding: `p-4` when padding is enabled
+
+## Scroll Configuration
+
+- Horizontal indicator: Hidden
+- Vertical indicator: Hidden
+- Scroll enabled: Controlled by `scrollable` prop
+- Bounce effect: Controlled by `bounces` prop
+- Content container: Adapts to scroll state
+
+## Theme Support
+
+- Light mode: White background
+- Dark mode: Black background
+
+## Notes
+
+- Uses React Native's ScrollView component
+- Maintains consistent styling across screens
+- Handles both scrollable and fixed content
+- Supports nested components
+- No scroll indicators for clean UI
+- Optional padding for content spacing
+- Full screen height by default
+- Flexible content rendering

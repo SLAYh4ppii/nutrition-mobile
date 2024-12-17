@@ -1,45 +1,117 @@
 # SearchBar Component
 
-The `SearchBar` component is a custom input field designed for searching, with an integrated button for triggering a scan action. It is styled to fit within a React Native application and uses the `@expo/vector-icons` for the scan icon.
+A stylish search input component with integrated camera scan functionality and dark mode support.
 
-## Structure
+## Overview
 
-The component is structured into two main parts:
+The SearchBar component provides a text input field for food search with an integrated camera scan button. It features a clean design with border styling, dark mode support, and navigation capabilities.
 
-1. **TextInput Field**: Allows users to input their search queries.
-2. **Pressable Scan Button**: A button that triggers a predefined action, in this case, navigating to a "scanfood" route using `expo-router`.
+## Props
 
-## Styles
+| Prop         | Type                    | Default | Description |
+|--------------|-------------------------|---------|-------------|
+| onChangeText | (text: string) => void  | -       | Callback function triggered when search text changes |
 
-The component uses inline styling to achieve its appearance. The main styles include:
+## Features
 
-- A white background with a slight padding for the outer `View`.
-- A bordered, rounded rectangle for the inner `View` that contains the text input and button.
-- The text input takes up the majority of the space, with padding to separate it from the scan button.
-- The scan button is styled to align in the center and has a border to visually separate it from the text input.
-
-## Functionality
-
-- The text input allows users to enter search queries with a placeholder hint.
-- The scan button, when pressed, navigates the user to a "scanfood" route, indicating an action to scan food items.
+- Text input for food search
+- Integrated camera scan button
+- Dark mode support
+- Responsive layout
+- Custom placeholder styling
+- Border styling
+- Navigation integration
+- Icon integration
+- Touch feedback
 
 ## Usage
 
-This component can be used in any screen of a React Native application where a search functionality is required, especially when an additional action like scanning is needed alongside searching.
+```tsx
+import SearchBar from '@components/SearchBar';
 
-## Example
+<SearchBar 
+  onChangeText={(text) => {
+    console.log('Search text:', text);
+  }}
+/>
+```
 
-```jsx
-import React from 'react';
-import { View } from 'react-native';
-import SearchBar from './SearchBar';
+## Visual Elements
 
-const MyScreen = () => {
-  return (
-    <View>
-      <SearchBar />
-    </View>
-  );
-};
+### Search Input
+- Placeholder text: "Search for foods"
+- Custom placeholder color: #666666
+- Left padding for text
+- Flexible width
+- Dark mode text color support
 
-export default MyScreen;
+### Scan Button
+- Ionicons scan-circle-outline icon
+- Size: 30px
+- Color: #666666
+- Right-rounded corners
+- Press handling with navigation
+
+## Styling
+
+The component uses Tailwind CSS classes:
+
+### Main Container
+- `h-20 w-full flex-row items-center justify-center bg-white p-2 dark:bg-black`
+  - Fixed height: 20 units
+  - Full width
+  - Centered content
+  - Light/dark backgrounds
+  - Consistent padding
+
+### Search Container
+- `flex-row items-center justify-center rounded-2xl border border-gray-600 bg-white p-1 dark:bg-black`
+  - Row layout
+  - Centered content
+  - Rounded corners
+  - Border styling
+  - Theme-aware background
+
+### Input Field
+- `flex-1 pl-3 dark:text-white`
+  - Flexible width
+  - Left padding
+  - Dark mode text color
+
+### Scan Button
+- `rounded-r-lg bg-white p-2 dark:bg-black`
+  - Right-rounded corners
+  - Theme-aware background
+  - Consistent padding
+
+## Navigation
+
+- Uses Expo Router
+- Camera scan button navigates to "camera" route
+- Handles navigation through router.push
+
+## Theme Support
+
+- Light mode:
+  - White background
+  - Gray border
+  - Dark text
+  - Gray placeholder
+
+- Dark mode:
+  - Black background
+  - Gray border
+  - White text
+  - Gray placeholder
+
+## Notes
+
+- Requires @expo/vector-icons for Ionicons
+- Uses expo-router for navigation
+- Maintains consistent height
+- Supports text input events
+- Preserves border styling in both themes
+- Icon color remains consistent in both themes
+- Full width container for proper alignment
+- Flexible input field width
+- Touch feedback on scan button

@@ -1,35 +1,131 @@
 # Image Component
 
-The `Image` component is a wrapper around the `Image` component from React Native (`RNImage`). It is designed to simplify the usage of images in your React Native application by directly passing all received props to the underlying `RNImage` component.
+A wrapper around Expo Image with loading state handling and theme-aware loading indicator.
+
+## Overview
+
+The Image component extends Expo's Image component by adding a loading indicator, smooth opacity transitions, and theme support. It provides visual feedback during image loading and maintains consistent styling.
 
 ## Props
 
-The component accepts all props that the standard React Native `Image` component accepts (`ImageProps`). This includes:
+Extends all Expo Image props (`ImageProps`)
 
-- `source`: An object specifying the URI of the image to display.
-- `style`: An object specifying the styling of the image, such as `width`, `height`, `borderRadius`, etc.
-- Various event handlers like `onLoad`, `onError`, and more.
+## Features
 
-Refer to the [React Native Image documentation](https://reactnative.dev/docs/image) for a full list of available props.
+- Loading state management
+- Theme-aware loading indicator
+- Smooth opacity transitions
+- Consistent border radius
+- Loading feedback
+- Absolute positioning
+- Centered loading indicator
+- Automatic state handling
+- Style inheritance
+- Dark mode support
 
 ## Usage
 
-Here's an example of how to use the `Image` component:
+```tsx
+import Image from '@components/Image';
 
-```jsx
-import React from 'react';
-import { View } from 'react-native';
-import Image from './path/to/Image';
+// Basic usage
+<Image 
+  source="https://example.com/image.jpg"
+  style={{ width: 200, height: 200 }}
+/>
 
-const App = () => {
-  return (
-    <View>
-      <Image
-        source={{ uri: 'https://example.com/image.jpg' }}
-        style={{ width: 100, height: 100, borderRadius: 50 }}
-      />
-    </View>
-  );
-};
+// With custom styling
+<Image 
+  source={require('./local-image.png')}
+  style={{
+    width: 300,
+    height: 200,
+    borderRadius: 12
+  }}
+  contentFit="cover"
+/>
+```
 
-export default App;
+## Styling
+
+### Container
+- Default View wrapper
+- Maintains original dimensions
+- Preserves layout context
+
+### Loading Indicator Container
+```typescript
+{
+  justifyContent: "center",
+  alignItems: "center",
+  position: "absolute",
+  zIndex: 1
+}
+```
+- Centered content
+- Absolute positioning
+- Top layer placement
+- Inherits parent dimensions
+
+### Image
+- Default border radius: 24
+- Opacity transitions:
+  - Loading: 0
+  - Loaded: 1
+- Inherits provided styles
+
+## Loading States
+
+### Initial State
+- Opacity: 0
+- Loading indicator visible
+- Theme-aware indicator color
+
+### Loading Complete
+- Opacity: 1
+- Loading indicator hidden
+- Smooth transition
+
+## Theme Support
+
+### Light Mode
+- Loading indicator: Black
+
+### Dark Mode
+- Loading indicator: White
+
+## Event Handling
+
+### Load Events
+```typescript
+onLoad={() => {
+  setLoaded(true);
+}}
+
+onLoadEnd={() => {
+  setLoaded(true);
+}}
+```
+- Handles both load events
+- Updates loading state
+- Triggers opacity transition
+
+## Dependencies
+
+- expo-image
+- nativewind
+- React Native core components
+
+## Notes
+
+- Uses Expo Image for better performance
+- Maintains aspect ratio of original image
+- Supports all Expo Image props
+- Handles loading edge cases
+- Smooth visual transitions
+- Consistent border radius
+- Theme-aware loading states
+- Preserves original styling
+- Centered loading indicator
+- Proper z-index handling
+- Supports local and remote images
