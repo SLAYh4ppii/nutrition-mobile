@@ -111,20 +111,50 @@
 ## 🛠️ Technology Stack
 
 ### Core
-- **React Native (Expo)** - Mobile framework
-- **TypeScript** - Type safety
-- **Expo Router** - Navigation
-- **Zustand** - State management
+- **React Native (Expo v52)** - Mobile framework
+- **TypeScript** - Type safety and enhanced development experience
+- **Expo Router v4** - File-based routing solution
+- **Zustand v4** - Lightweight state management
+- **React Query v5** - Powerful data synchronization
 
-### Performance
-- **React Query** - Data fetching
-- **Flash List** - High-performance lists
-- **ML Kit** - Machine learning capabilities
+### UI & Styling
+- **NativeWind v4** - Tailwind CSS for React Native
+- **Tailwind CSS v3** - Utility-first CSS framework
+- **@expo/vector-icons v14** - Comprehensive icon library
+- **Lottie React Native v7** - High-quality animations
+- **React Native Reanimated v3** - Advanced animations
+- **React Native Gesture Handler** - Native-driven gesture management
 
-### Development & Deployment
-- **EAS Build** - Build system
-- **EAS Submit** - App submission
-- **EAS Update** - OTA updates
+### Data Visualization
+- **@shopify/react-native-skia** - High-performance 2D graphics
+- **@shopify/flash-list** - High-performance list component
+
+### Internationalization
+- **i18next** - Robust internationalization framework
+- **expo-localization** - Native device locale detection
+- **react-i18next** - React bindings for i18next
+
+### Storage & Performance
+- **react-native-mmkv** - High-performance key-value storage
+- **date-fns** - Modern date utility library
+- **lodash** - Utility library for data manipulation
+
+### Camera & Vision
+- **react-native-vision-camera v4** - Camera functionality
+- **expo-image** - High-performance image component
+
+### Development Tools
+- **Jest** - Testing framework
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **expo-dev-client** - Development build capabilities
+
+### Native Features
+- **expo-haptics** - Haptic feedback
+- **expo-file-system** - File system access
+- **expo-splash-screen** - Splash screen management
+- **expo-status-bar** - Status bar control
+- **expo-system-ui** - System UI integration
 
 ## 📦 Installation
 
