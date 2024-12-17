@@ -47,14 +47,59 @@
 ### Core Components
 - `BackgroundImage` - Customizable background wrapper
 - `Button` - Reusable button component
-- `Checkbox` - Interactive checkbox element
+- `Checkbox` - Interactive checkbox element with animations
+- `DailyChart` - Daily macronutrient distribution chart
 - `DatePicker` - Date selection component
 - `FoodDetector` - ML-powered food recognition
 - `FoodListItem` - Food item display component
+- `Heatmap` - Calendar-style nutrition heatmap
+- `HomeMealInput` - Quick meal input interface
 - `Image` - Enhanced image component
+- `LargeSwitch` - Segmented control component
+- `MeasurementsSheet` - Bottom sheet for measurements
+- `Meals` - Meal tracking interface
+- `NumberSelector` - Weight selection component
+- `Overview` - Nutritional overview dashboard
+- `ProgressBar` - Animated progress indicator
 - `ScreenView` - Screen container component
 - `SearchBar` - Food search functionality
 - `Separator` - Visual divider component
+- `Stepper` - Horizontal step indicator
+- `Table` - Nutritional information table
+- `TabView` - Swipeable tab navigation
+- `TextInput` - Customizable text input
+- `ValueChip` - Nutrient value display chip
+- `WaterOverview` - Water consumption tracker
+- `WeeklyChart` - Weekly nutrition distribution chart
+
+### Documentation for Components
+
+- [ActivityOverview](docs/components/ActivityOverview.md)
+- [Button](docs/components/Button.md)
+- [Checkbox](docs/components/Checkbox.md)
+- [DailyChart](docs/components/DailyChart.md)
+- [DatePicker](docs/components/DatePicker.md)
+- [FoodDetector](docs/components/FoodDetector.md)
+- [FoodListItem](docs/components/FoodListItem.md)
+- [Heatmap](docs/components/Heatmap.md)
+- [HomeMealInput](docs/components/HomeMealInput.md)
+- [Image](docs/components/Image.md)
+- [LargeSwitch](docs/components/LargeSwitch.md)
+- [MeasurementsSheet](docs/components/MeasurementsSheet.md)
+- [Meals](docs/components/Meals.md)
+- [NumberSelector](docs/components/NumberSelector.md)
+- [Overview](docs/components/Overview.md)
+- [ProgressBar](docs/components/ProgressBar.md)
+- [ScreenView](docs/components/ScreenView.md)
+- [SearchBar](docs/components/SearchBar.md)
+- [Separator](docs/components/Separator.md)
+- [Stepper](docs/components/Stepper.md)
+- [Table](docs/components/Table.md)
+- [TabView](docs/components/TabView.md)
+- [TextInput](docs/components/TextInput.md)
+- [ValueChip](docs/components/ValueChip.md)
+- [WaterOverview](docs/components/WaterOverview.md)
+- [WeeklyChart](docs/components/WeeklyChart.md)
 
 ### Screens
 - Profile Screen (`/screens/profile`)
