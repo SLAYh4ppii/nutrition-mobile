@@ -5,7 +5,6 @@
 ## 📱 Features
 
 ### 🔍 Smart Food Detection
-- Real-time food recognition using ML Kit
 - Instant nutritional information calculation
 - Camera integration for food scanning
 - Food image analysis and processing
