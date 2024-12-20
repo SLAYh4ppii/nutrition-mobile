@@ -4,9 +4,11 @@ import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { Tabs } from "expo-router/tabs";
 import { useColorScheme } from "nativewind";
+import { useTranslation } from "react-i18next";
 
 const AuthLayout = () => {
   const { colorScheme } = useColorScheme();
+  const { t } = useTranslation();
 
   return (
     <Tabs
@@ -30,7 +32,7 @@ const AuthLayout = () => {
       <Tabs.Screen
         name="(home)"
         options={{
-          title: "Home",
+          title: t("home.HEADER_TITLE"),
           tabBarIcon: () => (
             <Ionicons
               name="home-outline"
@@ -43,7 +45,7 @@ const AuthLayout = () => {
       <Tabs.Screen
         name="(foods)"
         options={{
-          title: "Foods",
+          title: t("foods.HEADER_TITLE"),
           tabBarIcon: () => (
             <Ionicons
               name="fast-food-outline"
@@ -56,7 +58,7 @@ const AuthLayout = () => {
       <Tabs.Screen
         name="(achivements)"
         options={{
-          title: "Bagdes",
+          title: t("achievements.HEADER_TITLE"),
           tabBarIcon: () => (
             <Ionicons
               name="ribbon-outline"
@@ -66,10 +68,25 @@ const AuthLayout = () => {
           ),
         }}
       />
+
+      <Tabs.Screen
+        name="(transformation)"
+        options={{
+          title: t("transformation.HEADER_TITLE"),
+          tabBarIcon: () => (
+            <Ionicons
+              name="ribbon-outline"
+              size={18}
+              color={colorScheme === "dark" ? "white" : "black"}
+            />
+          ),
+        }}
+      />
+
       <Tabs.Screen
         name="(profile)"
         options={{
-          title: "Profile",
+          title: t("profile.HEADER_TITLE"),
           tabBarIcon: () => (
             <Ionicons
               name="person-outline"

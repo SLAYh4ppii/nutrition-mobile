@@ -25,11 +25,11 @@ const en = {
         PIECE: "Piece",
         PACKAGE: "Package",
         ADD_MEAL: "Add Meal",
-      }
+      },
     },
     addWater: {
       HEADER_TITLE: "Add Water",
-    }
+    },
   },
   about: {
     title: "About",
@@ -115,6 +115,16 @@ const en = {
     title: "AI Recommendation",
     description: "Nutri Guide is generating a personalized meal plan for you.",
     description2: "Please wait a moment.",
+  },
+  transformation: {
+    HEADER_TITLE: "Transform",
+    title: "Transformation",
+    description: "Your transformation journey will be displayed here.",
+  },
+  foods: {
+    HEADER_TITLE: "Foods",
+    title: "Foods",
+    description: "Your food list will be displayed here.",
   },
 };
 

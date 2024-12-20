@@ -25,11 +25,11 @@ const tr = {
         PIECE: "Parça",
         PACKAGE: "Paket",
         ADD_MEAL: "Öğün Ekle",
-      }
+      },
     },
     addWater: {
       HEADER_TITLE: "Su Ekle",
-    }
+    },
   },
   about: {
     title: "Hakkında",
@@ -115,6 +115,16 @@ const tr = {
     title: "AI Önerisi",
     description: "Nutri Guide size özel bir yemek planı oluşturuyor.",
     description2: "Lütfen biraz bekleyin.",
+  },
+  transformation: {
+    HEADER_TITLE: "Dönüşüm",
+    title: "Dönüşüm",
+    description: "Your transformation journey will be displayed here.",
+  },
+  foods: {
+    HEADER_TITLE: "Yiyecekler",
+    title: "Yiyecekler",
+    description: "Yiyecekler sayfası",
   },
 };
 

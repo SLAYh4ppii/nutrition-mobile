@@ -7,6 +7,8 @@ import {
   FoodsFilledIcon,
   AchievementsFilledIcon,
   ProfileFilledIcon,
+  TransformationIcon,
+  TransformationFilledIcon,
 } from "@/src/assets/icons";
 import { useColorScheme } from "nativewind";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
@@ -35,6 +37,10 @@ const ButtonIconMap = {
   "(profile)": {
     active: ProfileFilledIcon,
     inactive: ProfileIcon,
+  },
+  "(transformation)": {
+    active: TransformationFilledIcon,
+    inactive: TransformationIcon,
   },
 } as const;
 
