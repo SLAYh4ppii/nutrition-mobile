@@ -19,12 +19,14 @@
         "buildType": "apk"
       },
       "ios": {
-        "simulator": false,
-        "teamId": "234567890",
-        "bundleIdentifier": "com.nutrition.app"
+        "simulator": false
       }
     },
-    "production": {}
+    "production": {
+      "android": {
+        "buildType": "apk"
+      }
+    }
   },
   "submit": {
     "production": {}
