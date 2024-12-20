@@ -16,6 +16,8 @@ type useRegisterType = {
   height: number;
   weight: number;
   gender: string;
+  firstName: string;
+  lastName: string;
 };
 
 const fetchRegister = async ({
@@ -24,8 +26,20 @@ const fetchRegister = async ({
   birthDate,
   height,
   weight,
+  firstName,
+  lastName,
+  gender,
 }: useRegisterType) => {
-  const body = JSON.stringify({ email, password, birthDate, height, weight });
+  const body = JSON.stringify({
+    email,
+    password,
+    birthDate,
+    height,
+    weight,
+    firstName,
+    lastName,
+    gender,
+  });
   const response = await fetch(REGISTER_API, {
     method: "POST",
     headers: {
@@ -34,7 +48,11 @@ const fetchRegister = async ({
     body,
   });
 
+  console.log("body", body);
+
   const data = await response.json();
+
+  console.log("data", data);
 
   if (!response.ok) {
     if (response.status === 409) {
@@ -43,7 +61,7 @@ const fetchRegister = async ({
   }
 
   //"message": "The following fields are required: firstName, lastName, gender"
-  if (data.message.startsWith("The following fields are required")) {
+  if (data.message?.startsWith("The following fields are required")) {
     throw new Error("Please fill all fields");
   }
 
@@ -59,6 +77,8 @@ const useRegister = ({
   height,
   weight,
   gender,
+  firstName,
+  lastName,
 }: useRegisterType) => {
   const { mutate, isPending, isSuccess, isError, error } = useMutation<
     MutationResponse,
@@ -76,7 +96,16 @@ const useRegister = ({
 
   return {
     register: () =>
-      mutate({ email, password, birthDate, height, weight, gender }),
+      mutate({
+        email,
+        password,
+        birthDate,
+        height,
+        weight,
+        gender,
+        firstName,
+        lastName,
+      }),
     isPending,
     isSuccess,
     isError,

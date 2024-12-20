@@ -10,6 +10,7 @@ import { PasswordErrors } from "./types";
 import RegisterReview from "./components/registerReview";
 import RegisterSuccess from "./components/registerSuccess";
 import useRegister from "@/src/query/hooks/useRegister";
+import { first } from "lodash";
 
 const Register = () => {
   const pagerRef = useRef<PagerView>(null);
@@ -34,6 +35,20 @@ const Register = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
   const scrollEnabledRef = useRef<boolean>(true);
 
+  console.log(
+    "user",
+    JSON.stringify({
+      email,
+      password,
+      firstName: name,
+      lastName,
+      age,
+      weight,
+      height,
+      gender,
+    }),
+  );
+
   const { register, isError, isPending, isSuccess, error } = useRegister({
     email,
     password,
@@ -41,6 +56,8 @@ const Register = () => {
     height,
     weight,
     gender,
+    firstName: name,
+    lastName,
   });
 
   useEffect(() => {

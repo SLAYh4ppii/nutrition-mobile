@@ -16,10 +16,12 @@ export type DailyIntake = {
 
 const fetchAddWater = async ({
   amount,
+  date,
 }: {
   amount: number;
+  date: Date;
 }): Promise<ResponseType> => {
-  const body = JSON.stringify({ ml: amount });
+  const body = JSON.stringify({ ml: amount, createdAt: date });
 
   const response = await fetchWithToken(WATER_API, {
     method: "POST",
@@ -50,8 +52,8 @@ const useAddWater = () => {
     onSuccess: (data, amount, context) => {},
 
     onSettled: (data, error, amount, context) => {
-        //invalidate the "water" query
-        _queryClient.invalidateQueries("water");
+      //invalidate the "water" query
+      _queryClient.invalidateQueries("water");
     },
   });
 

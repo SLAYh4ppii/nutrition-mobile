@@ -8,7 +8,7 @@ import Animated, {
   useSharedValue,
   withSequence,
   withSpring,
-  withTiming
+  withTiming,
 } from "react-native-reanimated";
 
 const clamp = (value: number, lowerBound = 0, upperBound = 1) => {
@@ -20,6 +20,7 @@ const AnimatedLottieView = Animated.createAnimatedComponent(LottieView);
 const AnimatedText = Animated.createAnimatedComponent(TextInput);
 
 const AddWater = () => {
+  "use no memo";
   const { data: addWaterData, error: addWaterError, mutate } = useAddWater();
 
   const glassRatio = useSharedValue(0);
@@ -86,7 +87,7 @@ const AddWater = () => {
           >
             <AnimatedText
               editable={false}
-              className="text-center text-xl font-semibold dark:text-white w-16"
+              className="w-16 text-center text-xl font-semibold dark:text-white"
               animatedProps={AmountTextProp}
             />
             <Text className="text-center text-sm font-semibold text-white dark:text-white">
