@@ -47,7 +47,7 @@ const Overview = ({ startDate, endDate }: OverviewProps) => {
     <View className="overflow-hidden rounded-lg bg-gray-50 dark:bg-gray-800">
       <View className="flex-row justify-between">
         <View className="flex w-1/3 flex-col items-center justify-center">
-          <Text className="text-black-400 text-lg font-bold dark:text-gray-100">
+          <Text className="text-black-400 text-2xl font-bold dark:text-gray-100">
             {total} <Text className="text-sm font-normal">kcal</Text>
           </Text>
           <Text className="text-sm font-semibold text-gray-400 dark:text-gray-300">
@@ -58,7 +58,7 @@ const Overview = ({ startDate, endDate }: OverviewProps) => {
         <View className="flex w-1/3 flex-col items-center justify-center">
           <Text
             className={cn(
-              "text-black-400 text-lg font-bold dark:text-gray-100",
+              "text-black-400 text-2xl font-bold dark:text-gray-100",
               {
                 "text-red-500": total < consumedCalories,
               },

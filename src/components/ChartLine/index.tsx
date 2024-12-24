@@ -31,7 +31,7 @@ const ChartLine = ({ value = 0 }: ChartLineProps) => {
             {
               backgroundColor:
                 value > 1
-                  ? "red"
+                  ? "#f87171"
                   : colorScheme === "dark"
                     ? "#a3e635"
                     : "#22c55e",

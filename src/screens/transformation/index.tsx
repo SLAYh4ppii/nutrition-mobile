@@ -90,17 +90,23 @@ function Item({
         alignItems: "center",
       }}
     >
-      {weight && (
-        <Text className="mb-2 rounded-xl bg-black p-1 px-2 text-2xl font-bold text-white">
-          {weight}
-          <Text className="text-sm font-normal"> kg</Text>
-        </Text>
-      )}
-      <Text className="text-md">{formatedDate}</Text>
-      <Text className="text-sm text-gray-500">
-        {date ? formatDistance(new Date(date), new Date(), {
-          addSuffix: true,
-        }) : ""}
+      <Text
+        style={{
+          display: weight === 0 ? "none" : "flex",
+        }}
+        className="mb-2 rounded-xl bg-black p-1 px-2 text-2xl font-bold text-white dark:bg-gray-400 dark:text-black"
+      >
+        {weight}
+        <Text className="text-sm"> kg</Text>
+      </Text>
+
+      <Text className="text-md text-black dark:text-white">{formatedDate}</Text>
+      <Text className="text-sm text-gray-500 dark:text-gray-400">
+        {date
+          ? formatDistance(new Date(date), new Date(), {
+              addSuffix: true,
+            })
+          : ""}
       </Text>
     </Pressable>
   );
