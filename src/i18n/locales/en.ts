@@ -117,7 +117,7 @@ const en = {
     description2: "Please wait a moment.",
   },
   transformation: {
-    HEADER_TITLE: "Transform",
+    HEADER_TITLE: "Transformation",
     title: "Transformation",
     description: "Your transformation journey will be displayed here.",
   },

@@ -1,66 +1,32 @@
-function getRandomSeed() {
-    return Math.floor(Math.random() * 1000);
-}
-
 export const DUMMY_TRANSFORMATION_DATA = [
-    {
-        date: "2024-12-16",
-        url: `https://picsum.photos/seed/${getRandomSeed()}/200/300`,
-    },
-    {
-        date: "2024-12-15",
-        url: `https://picsum.photos/seed/${getRandomSeed()}/200/300`,
-    },
-    {
-        date: "2024-12-14",
-        url: `https://picsum.photos/seed/${getRandomSeed()}/200/300`,
-    },
-    {
-        date: "2024-12-13",
-        url: `https://picsum.photos/seed/${getRandomSeed()}/200/300`,
-    },
-    {
-        date: "2024-12-12",
-        url: `https://picsum.photos/seed/${getRandomSeed()}/200/300`,
-    },
-    {
-        date: "2024-12-11",
-        url: `https://picsum.photos/seed/${getRandomSeed()}/200/300`,
-    },
-    {
-        date: "2024-12-10",
-        url: `https://picsum.photos/seed/${getRandomSeed()}/200/300`,
-    },
-    {
-        date: "2024-12-09",
-        url: `https://picsum.photos/seed/${getRandomSeed()}/200/300`,
-    },
-    {
-        date: "2024-12-08",
-        url: `https://picsum.photos/seed/${getRandomSeed()}/200/300`,
-    },
-    {
-        date: "2024-12-07",
-        url: `https://picsum.photos/seed/${getRandomSeed()}/200/300`,
-    },
-    {
-        date: "2024-12-06",
-        url: `https://picsum.photos/seed/${getRandomSeed()}/200/300`,
-    },
-    {
-        date: "2024-12-05",
-        url: `https://picsum.photos/seed/${getRandomSeed()}/200/300`,
-    },
-    {
-        date: "2024-12-04",
-        url: `https://picsum.photos/seed/${getRandomSeed()}/200/300`,
-    },
-    {
-        date: "2024-12-03",
-        url: `https://picsum.photos/seed/${getRandomSeed()}/200/300`,
-    },
-    {
-        date: "2024-12-02",
-        url: `https://picsum.photos/seed/${getRandomSeed()}/200/300`,
-    },
+  {
+    date: "2023-12-31",
+    url: `https://i2-prod.mirror.co.uk/incoming/article8144525.ece/ALTERNATES/n310p/PAY-An-obese-mum-has-transformed-her-life-by-taking-selfie.jpg`,
+    weight: 100,
+  },
+  {
+    date: "2024-03-15",
+    url: `https://i2-prod.mirror.co.uk/incoming/article8144530.ece/ALTERNATES/n310p/PAY-An-obese-mum-has-transformed-her-life-by-taking-selfie.jpg`,
+    weight: 93,
+  },
+  {
+    date: "2024-06-14",
+    url: `https://i2-prod.mirror.co.uk/incoming/article8144524.ece/ALTERNATES/n310p/PAY-An-obese-mum-has-transformed-her-life-by-taking-selfie.jpg`,
+    weight: 82,
+  },
+  {
+    date: "2024-08-11",
+    url: `https://i2-prod.mirror.co.uk/incoming/article8144527.ece/ALTERNATES/n310p/PAY-An-obese-mum-has-transformed-her-life-by-taking-selfie.jpg`,
+    weight: 75,
+  },
+  {
+    date: "2024-09-12",
+    url: `https://i2-prod.mirror.co.uk/incoming/article8144523.ece/ALTERNATES/n310p/PAY-An-obese-mum-has-transformed-her-life-by-taking-selfie.jpg`,
+    weight: 68,
+  },
+  {
+    date: "2024-12-11",
+    url: `https://i2-prod.mirror.co.uk/incoming/article8144529.ece/ALTERNATES/n310p/PAY-An-obese-mum-has-transformed-her-life-by-taking-selfie.jpg`,
+    weight: 60,
+  },
 ];

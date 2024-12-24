@@ -1,49 +1,84 @@
-import ScreenView from "@/src/components/ScreenView";
+import React, { useRef } from "react";
 import {
   Text,
   View,
   FlatList,
   useWindowDimensions,
   Pressable,
-  Image,
+  StyleSheet,
 } from "react-native";
-import { DUMMY_TRANSFORMATION_DATA } from "./dummy_data";
-import { useRef, useState } from "react";
 import { clamp } from "lodash";
 import Animated, {
-  runOnJS,
+  useSharedValue,
   useAnimatedScrollHandler,
   useAnimatedStyle,
-  withSequence,
-  withTiming,
 } from "react-native-reanimated";
 
-const data = [null, ...DUMMY_TRANSFORMATION_DATA, null];
+import ScreenView from "@/src/components/ScreenView";
+import { DUMMY_TRANSFORMATION_DATA } from "./dummy_data";
+import { format, formatDistance } from "date-fns";
 
-const Item = ({
+type TransformationItem = {
+  date: string | null;
+  url: string | null;
+  weight: number;
+};
+
+function TransformationImage({
+  index,
+  scrollPosition,
+  width,
+  url,
+}: {
+  index: number;
+  scrollPosition: Animated.SharedValue<number>;
+  width: number;
+  url: string | null;
+}) {
+  const animatedImageStyle = useAnimatedStyle(() => {
+    const currentSegment = scrollPosition.value / (width / 3);
+    const offset = currentSegment - index;
+
+    let opacity = 0;
+    if (offset >= 0 && offset < 1) {
+      opacity = 1 - offset;
+    } else if (offset >= -1 && offset < 0) {
+      opacity = offset + 1;
+    }
+
+    return {
+      ...StyleSheet.absoluteFillObject,
+      opacity,
+    };
+  });
+
+  if (!url) return null;
+
+  return (
+    <View style={{ position: "absolute", width, height: "100%" }}>
+      <Animated.Image
+        source={{ uri: url }}
+        style={[animatedImageStyle]}
+        resizeMode="cover"
+      />
+    </View>
+  );
+}
+
+function Item({
   date,
   url,
   width,
   onPress,
+  weight,
 }: {
   date: string | null;
   url: string | null;
   width: number;
   onPress: () => void;
-}) => {
-  if (!date || !url) {
-    return (
-      <Pressable
-        onPress={onPress}
-        style={{
-          height: "100%",
-          width: width / 3,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      ></Pressable>
-    );
-  }
+  weight: number;
+}) {
+  const formatedDate = date ? format(new Date(date), "dd MMM yyyy") : null;
 
   return (
     <Pressable
@@ -55,76 +90,77 @@ const Item = ({
         alignItems: "center",
       }}
     >
-      <Text>{date}</Text>
+      {weight && (
+        <Text className="mb-2 rounded-xl bg-black p-1 px-2 text-2xl font-bold text-white">
+          {weight}
+          <Text className="text-sm font-normal"> kg</Text>
+        </Text>
+      )}
+      <Text className="text-md">{formatedDate}</Text>
+      <Text className="text-sm text-gray-500">
+        {date ? formatDistance(new Date(date), new Date(), {
+          addSuffix: true,
+        }) : ""}
+      </Text>
     </Pressable>
   );
-};
+}
 
 const TransformationScreen = () => {
   const { width } = useWindowDimensions();
   const listRef = useRef<FlatList>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const scrollHandler = useAnimatedScrollHandler((event) => {
-    "worklet";
-    const currentIndex = event.contentOffset.x / width;
+  const data = [null, ...DUMMY_TRANSFORMATION_DATA, null];
 
-    if (currentIndex % 1 === 0) {
-      runOnJS(setCurrentIndex)(Math.round(currentIndex));
-    }
+  const scrollPosition = useSharedValue(0);
+
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: (event) => {
+      scrollPosition.value = event.contentOffset.x;
+    },
   });
-
-  const animatedImageStyle = useAnimatedStyle(() => {
-    return {
-      opacity: withSequence(withTiming(0), withTiming(1)),
-    };
-  }, [currentIndex]);
 
   return (
     <ScreenView scrollable={false}>
-      <View className="flex-1 bg-lime-200">
-        <Animated.Image
-          source={{ uri: DUMMY_TRANSFORMATION_DATA[currentIndex].url }}
-          fadeDuration={300}
-          style={[
-            {
-              height: "100%",
-              width: "100%",
-            },
-            animatedImageStyle,
-          ]}
-        />
+      <View style={{ flex: 1 }}>
+        {data
+          .filter((i) => i)
+          .map((item, index) => (
+            <TransformationImage
+              key={`image-${index}`}
+              index={index}
+              scrollPosition={scrollPosition}
+              width={width}
+              url={item?.url ?? null}
+            />
+          ))}
       </View>
-      <View className="h-24 w-full bg-lime-400">
+
+      <View style={{ height: 96, width: "100%" }}>
         <Animated.FlatList
           ref={listRef}
-          pagingEnabled
+          data={data as TransformationItem[]}
           horizontal
-          data={data as any}
-          renderItem={({
-            item,
-            index,
-          }: {
-            item: { date: string; url: string };
-            index: number;
-          }) => (
+          pagingEnabled
+          snapToOffsets={[width / 3, (width / 3) * 2, width]}
+          onScroll={scrollHandler}
+          scrollEventThrottle={16}
+          keyExtractor={(_, i) => i.toString()}
+          decelerationRate="fast"
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item, index }) => (
             <Item
               {...item}
               width={width}
+              weight={item?.weight ?? 0}
               onPress={() => {
-                // move item to the center
-
                 listRef.current?.scrollToIndex({
-                  index: clamp(index - 1, 0, DUMMY_TRANSFORMATION_DATA.length),
+                  index: clamp(index - 1, 0, data.length - 1),
                   animated: true,
                 });
-                setCurrentIndex(index);
               }}
             />
           )}
-          keyExtractor={(item, index) => index.toString()}
-          snapToOffsets={[width / 3, (width / 3) * 2, width]}
-          onScroll={scrollHandler}
         />
       </View>
     </ScreenView>
