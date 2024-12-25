@@ -1,4 +1,3 @@
-import ScreenView from "@/src/components/ScreenView";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useColorScheme } from "nativewind";
 import { useTranslation } from "react-i18next";
