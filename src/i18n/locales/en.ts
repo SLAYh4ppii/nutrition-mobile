@@ -121,6 +121,14 @@ const en = {
     title: "Transformation",
     description: "Your transformation journey will be displayed here.",
   },
+  transformationMethod: {
+    title: "Create New Milestone",
+    subtitle: "Create New Milestone",
+    description: "Ready to celebrate your fitness journey? 🎉 Create milestones to track your amazing progress and crush those goals! Watch yourself transform and stay super motivated along the way! 💪",
+    takePhoto: "Take a photo",
+    uploadFromGallery: "Upload from gallery",
+    close: "Close",
+  },
   foods: {
     HEADER_TITLE: "Foods",
     title: "Foods",

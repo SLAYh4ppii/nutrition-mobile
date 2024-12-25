@@ -121,6 +121,14 @@ const tr = {
     title: "Dönüşüm",
     description: "Your transformation journey will be displayed here.",
   },
+  transformationMethod: {
+    title: "Mihenk Taşı",
+    subtitle: "Yeni bir mihenk taşı oluştur!",
+    description: "Sağlıklı yaşam yolculuğunuzu başlatmak için bir mihenk taşı oluşturun. Bu sayede hedeflerinizi takip edebilirsiniz ve değişikliklerinizi görebilirsiniz. 🎉",
+    takePhoto: "Fotoğraf Çek",
+    uploadFromGallery: "Galeriden Yükle",
+    close: "Kapat",
+  },
   foods: {
     HEADER_TITLE: "Yiyecekler",
     title: "Yiyecekler",
