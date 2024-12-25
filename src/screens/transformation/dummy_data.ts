@@ -1,4 +1,10 @@
-export const DUMMY_TRANSFORMATION_DATA = [
+type TransformationData = {
+  date: string;
+  url: string;
+  weight: number;
+};
+
+export const DUMMY_TRANSFORMATION_DATA: TransformationData[] = [
   {
     date: "2023-12-31",
     url: `https://i2-prod.mirror.co.uk/incoming/article8144525.ece/ALTERNATES/n310p/PAY-An-obese-mum-has-transformed-her-life-by-taking-selfie.jpg`,
@@ -29,4 +35,4 @@ export const DUMMY_TRANSFORMATION_DATA = [
     url: `https://i2-prod.mirror.co.uk/incoming/article8144529.ece/ALTERNATES/n310p/PAY-An-obese-mum-has-transformed-her-life-by-taking-selfie.jpg`,
     weight: 60,
   },
-];
+] as const;

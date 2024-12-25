@@ -33,39 +33,18 @@ const AuthLayout = () => {
         name="(home)"
         options={{
           title: t("home.HEADER_TITLE"),
-          tabBarIcon: () => (
-            <Ionicons
-              name="home-outline"
-              size={18}
-              color={colorScheme === "dark" ? "white" : "black"}
-            />
-          ),
         }}
       />
       <Tabs.Screen
         name="(foods)"
         options={{
           title: t("foods.HEADER_TITLE"),
-          tabBarIcon: () => (
-            <Ionicons
-              name="fast-food-outline"
-              size={18}
-              color={colorScheme === "dark" ? "white" : "black"}
-            />
-          ),
         }}
       />
       <Tabs.Screen
         name="(achivements)"
         options={{
           title: t("achievements.HEADER_TITLE"),
-          tabBarIcon: () => (
-            <Ionicons
-              name="ribbon-outline"
-              size={18}
-              color={colorScheme === "dark" ? "white" : "black"}
-            />
-          ),
         }}
       />
 
@@ -73,13 +52,6 @@ const AuthLayout = () => {
         name="(transformation)"
         options={{
           title: t("transformation.HEADER_TITLE"),
-          tabBarIcon: () => (
-            <Ionicons
-              name="ribbon-outline"
-              size={18}
-              color={colorScheme === "dark" ? "white" : "black"}
-            />
-          ),
         }}
       />
 
@@ -87,13 +59,6 @@ const AuthLayout = () => {
         name="(profile)"
         options={{
           title: t("profile.HEADER_TITLE"),
-          tabBarIcon: () => (
-            <Ionicons
-              name="person-outline"
-              size={18}
-              color={colorScheme === "dark" ? "white" : "black"}
-            />
-          ),
         }}
       />
     </Tabs>

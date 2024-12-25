@@ -49,14 +49,12 @@ const Login = () => {
       const token = data?.data.token;
       if (token) {
         setToken(token);
-        router.replace("/(auth)/(home)");
+        router.replace("/(auth)/(home)" as any);
       }
     }
-    console.log('isSuccess', isSuccess);
   }, [isSuccess, remember]);
 
   const handleLogin = () => {
-    console.log("handleLogin");
     Keyboard.dismiss();
     login();
 
