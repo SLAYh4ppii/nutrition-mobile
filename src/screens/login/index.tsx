@@ -1,19 +1,31 @@
 import ScreenView from "@/src/components/ScreenView";
 import TextInput from "@/src/components/TextInput";
 import { useEffect, useState } from "react";
-
 import Button from "@/src/components/Button";
 import Checkbox from "@/src/components/Checkbox";
 import { useLogin } from "@/src/query/hooks/useLogin";
 import { useAuth } from "@/src/store/authStore";
 import { router } from "expo-router";
-import { Image, ImageBackground, ImageSourcePropType, Keyboard, SafeAreaView, Text, View } from "react-native";
+import {
+  Image,
+  ImageBackground,
+  Keyboard,
+  SafeAreaView,
+  Text,
+  View,
+  Alert,
+} from "react-native";
 import { isValidEmail, isValidPassword } from "./utils";
 import { useTranslation } from "react-i18next";
 import { useColorScheme } from "nativewind";
+import { auth } from "../../firebase";
+import { signInWithEmailAndPassword, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
 
 import LightBackground from "@/src/assets/images/light-bg.jpg";
 import DarkBackground from "@/src/assets/images/dark-bg.jpg";
+
+const provider = new GoogleAuthProvider();
 
 const Login = () => {
   const { t } = useTranslation();
@@ -21,9 +33,12 @@ const Login = () => {
   const { isLoggedIn, setToken } = useAuth();
   const { colorScheme } = useColorScheme();
 
-  const [loginInformation, setLoginInformation] = useState<
-    Record<string, { text: string; error: boolean }>
-  >({
+  interface LoginInformation {
+    email: { text: string; error: boolean };
+    password: { text: string; error: boolean };
+  }
+
+  const [loginInformation, setLoginInformation] = useState<LoginInformation>({
     email: {
       text: "test@gmail.com",
       error: false,
@@ -40,7 +55,6 @@ const Login = () => {
   });
 
   useEffect(() => {
-    // console.log("isLoggedIn", isLoggedIn);
     if (isSuccess) {
       if (remember) {
         // Save user data to local storage
@@ -54,18 +68,38 @@ const Login = () => {
     }
   }, [isSuccess, remember]);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     Keyboard.dismiss();
-    login();
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        loginInformation.email.text,
+        loginInformation.password.text
+      );
+      const token = await userCredential.user.getIdToken();
+      setToken(token);
+      router.replace("/(auth)/(home)" as any);
+    } catch (error: any) {
+      Alert.alert("Error", error.message);
+    }
+  };
 
-    return;
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const token = await result.user.getIdToken();
+      setToken(token);
+      router.replace("/(auth)/(home)" as any);
+    } catch (error: any) {
+      Alert.alert("Error", error.message);
+    }
   };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScreenView scrollable={false}>
         <ImageBackground
-          source={colorScheme === "dark" ? DarkBackground : LightBackground}
+          source={colorScheme === "dark" ? require("@/src/assets/images/dark-bg.jpg") : require("@/src/assets/images/light-bg.jpg")}
           className="flex-1 items-center justify-center p-4"
         >
           <View className="items-center gap-4 w-full">
@@ -110,9 +144,9 @@ const Login = () => {
               <Button
                 loading={isPending}
                 label={t('login.LOGIN')}
-                disabled={
-                  !isValidEmail(loginInformation.email.text) ||
-                  !isValidPassword(loginInformation.password.text)
+disabled={
+                  (!isValidEmail(loginInformation.email.text) ||
+                  !isValidPassword(loginInformation.password.text))
                 }
                 onPress={handleLogin}
               />
@@ -120,6 +154,10 @@ const Login = () => {
                 label={t('login.REMEMBER_ME')}
                 checked={remember}
                 onChange={() => setRemember(!remember)}
+              />
+              <Button
+                label="Login with Google"
+                onPress={handleGoogleLogin}
               />
             </View>
           </View>

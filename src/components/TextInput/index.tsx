@@ -19,17 +19,19 @@ const TextInput = ({
 }: TextInputProps) => {
   const { colorScheme } = useColorScheme();
 
+  const getBorderColor = () => {
+    if (error) {
+      return colorScheme === "dark" ? "#f87171" : "#ef4444";
+    } else {
+      return colorScheme === "dark" ? "#374151" : "#d1d5db";
+    }
+  };
+
   return (
     <View
       className="flex-row items-center rounded-xl border border-gray-300 px-4 dark:border-gray-400"
       style={{
-        borderColor: error
-          ? colorScheme === "dark"
-            ? "#f87171"
-            : "#ef4444"
-          : colorScheme === "dark"
-            ? "#374151"
-            : "#d1d5db",
+        borderColor: getBorderColor(),
       }}
     >
       {icon && (

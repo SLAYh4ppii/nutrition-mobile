@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "976546877177",
+    "project_id": "development-dietapp",
+    "storage_bucket": "development-dietapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976546877177:android:696c9131a08d2e90579c28",
+        "android_client_info": {
+          "package_name": "com.h4ppii.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZmP5g4U0xXwSXa1oG8AXUCr-FDx6ADg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

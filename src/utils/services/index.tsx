@@ -54,7 +54,7 @@ export const fetchFoodSearch = async ({
   page,
 }: {
   searchTerm: string;
-  page: any;
+  page: number;
 }) => {
   if (!searchTerm) {
     return {
@@ -64,7 +64,7 @@ export const fetchFoodSearch = async ({
   }
 
   const response = await fetchWithToken(
-    `${FOOD_SEARCH_API}?query=${searchTerm.toLowerCase()}&page=${page}&limit=20`,
+    `${FOOD_SEARCH_API}?query=${searchTerm}&page=${page}&limit=20`,
   );
 
   const data = (await response.json()) as PageResponse;
@@ -110,7 +110,7 @@ export const insertMeal = async ({
 }) => {
   const body = {
     mealTime,
-    food: foods,
+    foods: foods,
     createdAt: date.toISOString(),
   };
 
@@ -170,7 +170,7 @@ export const fetchSearchFoodByImage = async (
 
   const res = await uploader.uploadAsync();
 
-  const data = (await res?.body) ? JSON.parse(res.body) : null;
+  const data = res?.body ? JSON.parse(res.body) : null;
 
   return data;
 };

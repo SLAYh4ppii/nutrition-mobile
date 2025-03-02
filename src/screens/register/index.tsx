@@ -11,6 +11,11 @@ import RegisterReview from "./components/registerReview";
 import RegisterSuccess from "./components/registerSuccess";
 import useRegister from "@/src/query/hooks/useRegister";
 import { first } from "lodash";
+import { auth } from "../../firebase";
+import { createUserWithEmailAndPassword, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
+
+const provider = new GoogleAuthProvider();
 
 const Register = () => {
   const pagerRef = useRef<PagerView>(null);
@@ -35,20 +40,6 @@ const Register = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
   const scrollEnabledRef = useRef<boolean>(true);
 
-  console.log(
-    "user",
-    JSON.stringify({
-      email,
-      password,
-      firstName: name,
-      lastName,
-      age,
-      weight,
-      height,
-      gender,
-    }),
-  );
-
   const { register, isError, isPending, isSuccess, error } = useRegister({
     email,
     password,
@@ -61,7 +52,6 @@ const Register = () => {
   });
 
   useEffect(() => {
-    // error && Alert.alert("Error", error.message);
     if (error) {
       console.log(error.message);
       Alert.alert("Error", error.message);
@@ -96,11 +86,32 @@ const Register = () => {
     }
   }, [password, passwordVerify, email]);
 
-  const handleRegisterButtonPress = () => {
-    //Gather register data and send it to the server
-    const birthDate = new Date().toISOString();
+  const handleRegisterButtonPress = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const token = await userCredential.user.getIdToken();
+      // setToken(token); // Assuming setToken is still needed
+      pagerRef.current?.setPage(3);
+      setActiveStep(3);
+    } catch (error: any) {
+      Alert.alert("Error", error.message);
+    }
+  };
 
-    register();
+  const handleGoogleRegister = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const token = await result.user.getIdToken();
+      // setToken(token); // Assuming setToken is still needed
+      pagerRef.current?.setPage(3);
+      setActiveStep(3);
+    } catch (error: any) {
+      Alert.alert("Error", error.message);
+    }
   };
 
   return (
@@ -170,6 +181,10 @@ const Register = () => {
                 handleRegisterButtonPress();
               }
             }}
+          />
+          <Button
+            label="Register with Google"
+            onPress={handleGoogleRegister}
           />
         </View>
       )}
